@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Card from "./Card";
+import Toggle from "../../Atoms/Toggle/Toggle";
+import Button from "../../Atoms/Button/Button";
 
 const meta = {
   title: "Components/Molecules/Card",
@@ -34,12 +36,15 @@ const sampleContent =
 
 export const Default: Story = {
   args: {
-    title: "Card Title",
-    children: sampleContent,
-    primaryLabel: "Confirm",
-    ghostLabel: "Cancel",
-    variant: "primary",
+    title: "",
   },
+  render: () => (
+    <Card title="Notifications">
+      <div className="flex flex-col gap-3">
+        <p>Here is my card content</p>
+      </div>
+    </Card>
+  ),
 };
 
 export const Secondary: Story = {
@@ -47,8 +52,6 @@ export const Secondary: Story = {
     title: "Card Title",
     children: sampleContent,
     variant: "secondary",
-    primaryLabel: "Confirm",
-    ghostLabel: "Cancel",
   },
 };
 
@@ -57,8 +60,6 @@ export const Tertiary: Story = {
     title: "Card Title",
     children: sampleContent,
     variant: "tertiary",
-    primaryLabel: "Confirm",
-    ghostLabel: "Cancel",
   },
 };
 
@@ -68,8 +69,6 @@ export const Sharp: Story = {
     children: sampleContent,
     variant: "primary",
     sharp: true,
-    primaryLabel: "Confirm",
-    ghostLabel: "Cancel",
   },
 };
 
@@ -79,8 +78,6 @@ export const SharpSecondary: Story = {
     children: sampleContent,
     variant: "secondary",
     sharp: true,
-    primaryLabel: "Confirm",
-    ghostLabel: "Cancel",
   },
 };
 
@@ -90,37 +87,72 @@ export const SharpTertiary: Story = {
     children: sampleContent,
     variant: "tertiary",
     sharp: true,
-    primaryLabel: "Confirm",
-    ghostLabel: "Cancel",
   },
+};
+
+export const WithToggle: Story = {
+  args: { title: "" },
+  render: () => (
+    <Card variant="primary" title="Notifications">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center justify-between">
+          <span>Email notifications</span>
+          <Toggle />
+        </div>
+        <div className="flex items-center justify-between">
+          <span>Push notifications</span>
+          <Toggle />
+        </div>
+        <div className="flex items-center justify-between">
+          <span>SMS alerts</span>
+          <Toggle />
+        </div>
+      </div>
+    </Card>
+  ),
+};
+
+export const WithToggleSharp: Story = {
+  args: { title: "" },
+  render: () => (
+    <Card title="Notifications" sharp>
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center justify-between">
+          <span>Email notifications</span>
+          <Toggle sharp />
+        </div>
+        <div className="flex items-center justify-between">
+          <span>Push notifications</span>
+          <Toggle sharp />
+        </div>
+        <div className="flex items-center justify-between">
+          <span>SMS alerts</span>
+          <Toggle sharp />
+        </div>
+        <div className="flex justify-end gap-2 mt-2">
+          <Button sharp variant="ghost">
+            Cancel
+          </Button>
+          <Button sharp variant="primary">
+            Confirm
+          </Button>
+        </div>
+      </div>
+    </Card>
+  ),
 };
 
 export const AllVariants: Story = {
   args: { title: "" },
   render: () => (
     <div className="flex flex-col gap-3 w-[420px]">
-      <Card
-        title="Primary"
-        variant="primary"
-        primaryLabel="Confirm"
-        ghostLabel="Cancel"
-      >
+      <Card title="Primary" variant="primary">
         {sampleContent}
       </Card>
-      <Card
-        title="Secondary"
-        variant="secondary"
-        primaryLabel="Confirm"
-        ghostLabel="Cancel"
-      >
+      <Card title="Secondary" variant="secondary">
         {sampleContent}
       </Card>
-      <Card
-        title="Tertiary"
-        variant="tertiary"
-        primaryLabel="Confirm"
-        ghostLabel="Cancel"
-      >
+      <Card title="Tertiary" variant="tertiary">
         {sampleContent}
       </Card>
     </div>
@@ -131,31 +163,13 @@ export const AllVariantsSharp: Story = {
   args: { title: "" },
   render: () => (
     <div className="flex flex-col gap-3 w-[420px]">
-      <Card
-        title="Primary"
-        variant="primary"
-        sharp
-        primaryLabel="Confirm"
-        ghostLabel="Cancel"
-      >
+      <Card title="Primary" variant="primary" sharp>
         {sampleContent}
       </Card>
-      <Card
-        title="Secondary"
-        variant="secondary"
-        sharp
-        primaryLabel="Confirm"
-        ghostLabel="Cancel"
-      >
+      <Card title="Secondary" variant="secondary" sharp>
         {sampleContent}
       </Card>
-      <Card
-        title="Tertiary"
-        variant="tertiary"
-        sharp
-        primaryLabel="Confirm"
-        ghostLabel="Cancel"
-      >
+      <Card title="Tertiary" variant="tertiary" sharp>
         {sampleContent}
       </Card>
     </div>

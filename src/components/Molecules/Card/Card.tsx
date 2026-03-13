@@ -1,8 +1,7 @@
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import Button from "../../Atoms/Button/Button";
 
-const cardVariants = cva("w-full bg-gray-600 text-white overflow-hidden", {
+const cardVariants = cva("w-full text-white overflow-hidden", {
   variants: {
     variant: {
       primary: "bg-emerald-500",
@@ -48,19 +47,6 @@ const bodyVariants = cva("border-l-4 px-4 py-4 text-slate-200 bg-gray-500", {
   },
 });
 
-const footerVariants = cva("border-l-4 px-4 py-3 bg-gray-500", {
-  variants: {
-    variant: {
-      primary: "border-l-emerald-500",
-      secondary: "border-l-violet-700",
-      tertiary: "border-l-blue-500",
-    },
-  },
-  defaultVariants: {
-    variant: "primary",
-  },
-});
-
 const wrapperVariants = cva("block p-px", {
   variants: {
     variant: {
@@ -82,28 +68,10 @@ export interface CardProps
     Omit<HTMLAttributes<HTMLDivElement>, "title">,
     VariantProps<typeof cardVariants> {
   title: ReactNode;
-  primaryLabel?: string;
-  ghostLabel?: string;
-  onPrimary?: () => void;
-  onGhost?: () => void;
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  (
-    {
-      className,
-      sharp,
-      variant,
-      title,
-      children,
-      primaryLabel = "Confirm",
-      ghostLabel = "Cancel",
-      onPrimary,
-      onGhost,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ className, sharp, variant, title, children, ...props }, ref) => {
     const card = (
       <div
         ref={ref}
@@ -115,16 +83,6 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           <span className="text-lg">{title}</span>
         </div>
         <div className={bodyVariants({ variant })}>{children}</div>
-        <div className={footerVariants({ variant })}>
-          <div className="flex justify-end gap-2">
-            <Button variant="ghost" sharp={sharp} onClick={onGhost}>
-              {ghostLabel}
-            </Button>
-            <Button variant={variant} sharp={sharp} onClick={onPrimary}>
-              {primaryLabel}
-            </Button>
-          </div>
-        </div>
       </div>
     );
 
