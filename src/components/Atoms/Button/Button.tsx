@@ -10,7 +10,7 @@ const buttonVariants = cva(
         primary: "bg-emerald-500 text-white hover:bg-emerald-600",
         secondary: "bg-violet-700 text-white hover:bg-violet-800",
         tertiary: "bg-blue-500 text-white hover:bg-blue-600",
-        ghost: "bg-transparent text-slate-200 hover:bg-gray-700",
+        ghost: "bg-transparent text-slate-200 hover:bg-gray-600",
         danger: "bg-red-500 text-white hover:bg-red-600",
       },
       size: {
@@ -19,7 +19,7 @@ const buttonVariants = cva(
         lg: "px-6 py-3 text-lg",
       },
       sharp: {
-        true: "rounded-none",
+        true: "rounded-none active:opacity-75",
         false: "rounded-lg",
       },
     },

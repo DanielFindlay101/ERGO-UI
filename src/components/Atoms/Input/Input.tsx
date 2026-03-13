@@ -2,14 +2,14 @@ import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const inputVariants = cva(
-  `w-full px-4 py-2 text-base bg-gray-900 border border-emerald-700 focus:ring-2 focus:ring-emerald-500 text-white 
+  `w-full px-4 py-2 text-base bg-gray-900 border text-gray-200 
   transition-colors placeholder:text-gray-500
   focus:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
   {
     variants: {
       error: {
-        true: "border-none",
-        false: "",
+        true: "border-red-500",
+        false: "border-emerald-700 focus:ring-2 focus:ring-emerald-500",
       },
       sharp: {
         true: "rounded-none",
@@ -22,9 +22,9 @@ const inputVariants = cva(
     },
     compoundVariants: [
       {
-        sharp: false,
+        sharp: true,
         error: true,
-        className: "border-red-500 focus:ring-red-500",
+        className: "border-transparent",
       },
     ],
     defaultVariants: {
@@ -44,7 +44,7 @@ const sharpWrapperVariants = cva(
     variants: {
       error: {
         true: "bg-red-500",
-        false: "bg-emerald-700 focus-within:bg-emerald-500",
+        false: "bg-emerald-700 focus-within:bg-emerald-500 ",
       },
     },
     defaultVariants: {
@@ -58,11 +58,22 @@ export interface InputProps
     InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputVariants> {
   icon?: ReactNode;
+  label: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, error, sharp, iconLeft, icon, placeholder, style, ...props },
+    {
+      className,
+      error,
+      sharp,
+      iconLeft,
+      icon,
+      placeholder,
+      style,
+      label,
+      ...props
+    },
     ref,
   ) => {
     const hasIcon = icon !== undefined && icon !== null;
@@ -103,7 +114,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     if (sharp) {
       return (
-        <label>
+        <label className="flex flex-col gap-0">
+          <span className="text-gray-300">{label}</span>
           <div
             className={sharpWrapperVariants({ error })}
             style={{ clipPath: SHARP_INPUT_CLIP_PATH }}
@@ -114,7 +126,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       );
     }
 
-    return <label>{inner}</label>;
+    return (
+      <label>
+        <span className="text-gray-300">{label}</span>
+        {inner}
+      </label>
+    );
   },
 );
 

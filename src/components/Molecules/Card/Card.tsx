@@ -112,7 +112,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         {...props}
       >
         <div className={headerVariants({ variant })}>
-          <span>{title}</span>
+          <span className="text-lg">{title}</span>
         </div>
         <div className={bodyVariants({ variant })}>{children}</div>
         <div className={footerVariants({ variant })}>
