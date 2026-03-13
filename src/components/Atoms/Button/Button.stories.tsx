@@ -29,6 +29,9 @@ const meta = {
     sharp: {
       control: "boolean",
     },
+    outline: {
+      control: "boolean",
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -179,4 +182,60 @@ export const SharpLarge: Story = {
     size: "lg",
     sharp: true,
   },
+};
+
+export const OutlinePrimary: Story = {
+  args: { children: "Button", variant: "primary", outline: true },
+};
+
+export const OutlineSecondary: Story = {
+  args: { children: "Button", variant: "secondary", outline: true },
+};
+
+export const OutlineTertiary: Story = {
+  args: { children: "Button", variant: "tertiary", outline: true },
+};
+
+export const OutlineDanger: Story = {
+  args: { children: "Button", variant: "danger", outline: true },
+};
+
+export const SharpOutlinePrimary: Story = {
+  args: { children: "Button", variant: "primary", sharp: true, outline: true },
+};
+
+export const SharpOutlineSecondary: Story = {
+  args: { children: "Button", variant: "secondary", sharp: true, outline: true },
+};
+
+export const SharpOutlineTertiary: Story = {
+  args: { children: "Button", variant: "tertiary", sharp: true, outline: true },
+};
+
+export const SharpOutlineDanger: Story = {
+  args: { children: "Button", variant: "danger", sharp: true, outline: true },
+};
+
+export const AllOutlineVariants: Story = {
+  args: { children: "" },
+  render: () => (
+    <div className="flex gap-3 items-center">
+      <Button variant="primary" outline>Primary</Button>
+      <Button variant="secondary" outline>Secondary</Button>
+      <Button variant="tertiary" outline>Tertiary</Button>
+      <Button variant="danger" outline>Danger</Button>
+    </div>
+  ),
+};
+
+export const AllOutlineVariantsSharp: Story = {
+  args: { children: "" },
+  render: () => (
+    <div className="flex gap-3 items-center">
+      <Button variant="primary" outline sharp>Primary</Button>
+      <Button variant="secondary" outline sharp>Secondary</Button>
+      <Button variant="tertiary" outline sharp>Tertiary</Button>
+      <Button variant="danger" outline sharp>Danger</Button>
+    </div>
+  ),
 };
