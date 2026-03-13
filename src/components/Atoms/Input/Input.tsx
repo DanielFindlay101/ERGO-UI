@@ -20,13 +20,6 @@ const inputVariants = cva(
         false: "pr-10 pl-4",
       },
     },
-    compoundVariants: [
-      {
-        sharp: true,
-        error: true,
-        className: "border-transparent",
-      },
-    ],
     defaultVariants: {
       error: false,
       sharp: false,
