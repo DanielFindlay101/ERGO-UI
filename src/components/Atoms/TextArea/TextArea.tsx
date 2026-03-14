@@ -1,8 +1,8 @@
-import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
+import { TextareaHTMLAttributes, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
-const inputVariants = cva(
-  `w-full py-2 bg-gray-900 border text-gray-400
+const textAreaVariants = cva(
+  `w-full px-4 py-2 bg-gray-900 border text-gray-400 resize-none
   transition-colors placeholder:text-gray-500
   focus:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
   {
@@ -19,10 +19,6 @@ const inputVariants = cva(
       sharp: {
         true: "rounded-none",
         false: "rounded-lg",
-      },
-      iconLeft: {
-        true: "pl-10 pr-4",
-        false: "pr-10 pl-4",
       },
     },
     compoundVariants: [
@@ -46,13 +42,9 @@ const inputVariants = cva(
       variant: "primary",
       error: false,
       sharp: false,
-      iconLeft: false,
     },
   },
 );
-
-const SHARP_INPUT_CLIP_PATH =
-  "polygon(0% 0%, 100% 0%, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0% 100%)";
 
 const sharpWrapperVariants = cva("inline-block p-px", {
   variants: {
@@ -89,65 +81,26 @@ const sharpWrapperVariants = cva("inline-block p-px", {
   },
 });
 
-export interface InputProps
+const SHARP_TEXTAREA_CLIP_PATH =
+  "polygon(0% 0%, 100% 0%, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0% 100%)";
+
+export interface TextAreaProps
   extends
-    InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof inputVariants> {
-  icon?: ReactNode;
+    TextareaHTMLAttributes<HTMLTextAreaElement>,
+    VariantProps<typeof textAreaVariants> {
   label: string;
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      className,
-      variant,
-      error,
-      sharp,
-      iconLeft,
-      icon,
-      placeholder,
-      style,
-      label,
-      ...props
-    },
-    ref,
-  ) => {
-    const hasIcon = icon !== undefined && icon !== null;
-
-    const input = (
-      <input
+const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  ({ className, variant, error, sharp, label, style, ...props }, ref) => {
+    const textarea = (
+      <textarea
         ref={ref}
-        placeholder={placeholder}
-        className={inputVariants({
-          variant,
-          error,
-          sharp,
-          iconLeft: hasIcon ? iconLeft : undefined,
-          className,
-        })}
-        style={sharp ? { clipPath: SHARP_INPUT_CLIP_PATH, ...style } : style}
+        rows={4}
+        className={textAreaVariants({ variant, error, sharp, className })}
+        style={sharp ? { clipPath: SHARP_TEXTAREA_CLIP_PATH, ...style } : style}
         {...props}
       />
-    );
-
-    const iconEl = hasIcon && (
-      <span
-        className={`absolute top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none ${
-          iconLeft ? "left-3" : "right-3"
-        }`}
-      >
-        {icon}
-      </span>
-    );
-
-    const inner = hasIcon ? (
-      <div className="relative flex items-center">
-        {input}
-        {iconEl}
-      </div>
-    ) : (
-      input
     );
 
     if (sharp) {
@@ -156,23 +109,23 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <span className="text-gray-300">{label}</span>
           <div
             className={sharpWrapperVariants({ variant, error })}
-            style={{ clipPath: SHARP_INPUT_CLIP_PATH }}
+            style={{ clipPath: SHARP_TEXTAREA_CLIP_PATH }}
           >
-            {inner}
+            {textarea}
           </div>
         </label>
       );
     }
 
     return (
-      <label>
+      <label className="flex flex-col gap-0">
         <span className="text-gray-300">{label}</span>
-        {inner}
+        {textarea}
       </label>
     );
   },
 );
 
-Input.displayName = "Input";
+TextArea.displayName = "TextArea";
 
-export default Input;
+export default TextArea;
