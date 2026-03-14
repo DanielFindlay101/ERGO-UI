@@ -30,15 +30,27 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-  args: { label: "Message", placeholder: "Enter your message...", variant: "primary" },
+  args: {
+    label: "Message",
+    placeholder: "Enter your message...",
+    variant: "primary",
+  },
 };
 
 export const Secondary: Story = {
-  args: { label: "Message", placeholder: "Enter your message...", variant: "secondary" },
+  args: {
+    label: "Message",
+    placeholder: "Enter your message...",
+    variant: "secondary",
+  },
 };
 
 export const Tertiary: Story = {
-  args: { label: "Message", placeholder: "Enter your message...", variant: "tertiary" },
+  args: {
+    label: "Message",
+    placeholder: "Enter your message...",
+    variant: "tertiary",
+  },
 };
 
 export const WithError: Story = {
@@ -46,7 +58,11 @@ export const WithError: Story = {
 };
 
 export const Disabled: Story = {
-  args: { label: "Message", placeholder: "Enter your message...", disabled: true },
+  args: {
+    label: "Message",
+    placeholder: "Enter your message...",
+    disabled: true,
+  },
 };
 
 export const Sharp: Story = {
@@ -54,19 +70,39 @@ export const Sharp: Story = {
 };
 
 export const SharpSecondary: Story = {
-  args: { label: "Message", placeholder: "Enter your message...", variant: "secondary", sharp: true },
+  args: {
+    label: "Message",
+    placeholder: "Enter your message...",
+    variant: "secondary",
+    sharp: true,
+  },
 };
 
 export const SharpTertiary: Story = {
-  args: { label: "Message", placeholder: "Enter your message...", variant: "tertiary", sharp: true },
+  args: {
+    label: "Message",
+    placeholder: "Enter your message...",
+    variant: "tertiary",
+    sharp: true,
+  },
 };
 
 export const SharpWithError: Story = {
-  args: { label: "Message", placeholder: "Enter your message...", sharp: true, error: true },
+  args: {
+    label: "Message",
+    placeholder: "Enter your message...",
+    sharp: true,
+    error: true,
+  },
 };
 
 export const SharpDisabled: Story = {
-  args: { label: "Message", placeholder: "Enter your message...", sharp: true, disabled: true },
+  args: {
+    label: "Message",
+    placeholder: "Enter your message...",
+    sharp: true,
+    disabled: true,
+  },
 };
 
 export const Tall: Story = {
@@ -77,9 +113,46 @@ export const AllVariants: Story = {
   args: { label: "", placeholder: "" },
   render: () => (
     <div className="flex flex-col gap-4 w-[320px]">
-      <TextArea label="Primary" placeholder="Enter your message..." variant="primary" />
-      <TextArea label="Secondary" placeholder="Enter your message..." variant="secondary" />
-      <TextArea label="Tertiary" placeholder="Enter your message..." variant="tertiary" />
+      <TextArea
+        label="Primary"
+        placeholder="Enter your message..."
+        variant="primary"
+      />
+      <TextArea
+        label="Secondary"
+        placeholder="Enter your message..."
+        variant="secondary"
+      />
+      <TextArea
+        label="Tertiary"
+        placeholder="Enter your message..."
+        variant="tertiary"
+      />
+    </div>
+  ),
+};
+export const AllSharpVariants: Story = {
+  args: { label: "", placeholder: "" },
+  render: () => (
+    <div className="flex flex-col gap-4 w-[320px]">
+      <TextArea
+        label="Primary"
+        sharp
+        placeholder="Enter your message..."
+        variant="primary"
+      />
+      <TextArea
+        label="Secondary"
+        sharp
+        placeholder="Enter your message..."
+        variant="secondary"
+      />
+      <TextArea
+        label="Tertiary"
+        sharp
+        placeholder="Enter your message..."
+        variant="tertiary"
+      />
     </div>
   ),
 };

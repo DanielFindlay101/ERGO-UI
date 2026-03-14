@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const selectVariants = cva(
-  `w-full pl-4 pr-10 py-2 text-base bg-gray-900 border text-gray-200 appearance-none
+  `w-full pl-4 pr-10 py-2 text-base bg-white dark:bg-gray-900 border text-gray-800 dark:text-gray-400 appearance-none
   transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
   {
     variants: {
@@ -39,7 +39,8 @@ const SHARP_SELECT_CLIP_PATH =
   "polygon(0% 0%, 100% 0%, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0% 100%)";
 
 export interface SelectProps
-  extends SelectHTMLAttributes<HTMLSelectElement>,
+  extends
+    SelectHTMLAttributes<HTMLSelectElement>,
     VariantProps<typeof selectVariants> {
   label: string;
   customColour?: string;
@@ -47,7 +48,10 @@ export interface SelectProps
 }
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ className, error, sharp, label, customColour, style, children, ...props }, ref) => {
+  (
+    { className, error, sharp, label, customColour, style, children, ...props },
+    ref,
+  ) => {
     const inner = (
       <div className="relative">
         <select
@@ -71,12 +75,15 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     if (sharp) {
       return (
         <label className="flex flex-col gap-0">
-          <span className="text-gray-300">{label}</span>
+          <span className="ext-gray-800 dark:text-gray-300">{label}</span>
           <div
             className={sharpWrapperVariants({ error })}
             style={
               customColour
-                ? { backgroundColor: customColour, clipPath: SHARP_SELECT_CLIP_PATH }
+                ? {
+                    backgroundColor: customColour,
+                    clipPath: SHARP_SELECT_CLIP_PATH,
+                  }
                 : { clipPath: SHARP_SELECT_CLIP_PATH }
             }
           >
@@ -88,7 +95,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <label className="flex flex-col gap-0">
-        <span className="text-gray-300">{label}</span>
+        <span className="ext-gray-800 dark:text-gray-300">{label}</span>
         {inner}
       </label>
     );

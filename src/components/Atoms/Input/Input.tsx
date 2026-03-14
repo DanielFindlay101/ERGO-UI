@@ -2,7 +2,7 @@ import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const inputVariants = cva(
-  `w-full py-2 bg-gray-900 border text-gray-400
+  `w-full py-2 bg-white dark:bg-gray-900 border text-gray-800 dark:text-gray-400
   transition-colors placeholder:text-gray-500
   focus:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
   {
@@ -153,7 +153,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     if (sharp) {
       return (
         <label className="flex flex-col gap-0">
-          <span className="text-gray-300">{label}</span>
+          <span className="text-gray-800 dark:text-gray-300">{label}</span>
           <div
             className={sharpWrapperVariants({ variant, error })}
             style={{ clipPath: SHARP_INPUT_CLIP_PATH }}
@@ -166,7 +166,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <label>
-        <span className="text-gray-300">{label}</span>
+        <span className="text-gray-800 dark:text-gray-300">{label}</span>
         {inner}
       </label>
     );
