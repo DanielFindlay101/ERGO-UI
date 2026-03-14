@@ -75,7 +75,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     if (sharp) {
       return (
         <label className="flex flex-col gap-0">
-          <span className="ext-gray-800 dark:text-gray-300">{label}</span>
+          <span className="text-gray-800 dark:text-gray-300">{label}</span>
           <div
             className={sharpWrapperVariants({ error })}
             style={
@@ -95,7 +95,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <label className="flex flex-col gap-0">
-        <span className="ext-gray-800 dark:text-gray-300">{label}</span>
+        <span className="text-gray-800 dark:text-gray-300">{label}</span>
         {inner}
       </label>
     );
