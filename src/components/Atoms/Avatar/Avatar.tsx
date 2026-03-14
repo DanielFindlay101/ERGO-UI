@@ -51,10 +51,11 @@ export interface AvatarProps extends Omit<
   sharp?: boolean;
   status?: AvatarStatus;
   size?: number;
+  customColour?: string;
 }
 
 const Avatar = forwardRef<HTMLImageElement, AvatarProps>(
-  ({ sharp, status, size = 48, src, alt, className, ...props }, ref) => {
+  ({ sharp, status, size = 48, src, alt, className, customColour, ...props }, ref) => {
     const indicatorSize = Math.max(8, Math.round(size * 0.22));
 
     return (
@@ -73,7 +74,7 @@ const Avatar = forwardRef<HTMLImageElement, AvatarProps>(
         {status && (
           <span
             className={indicatorVariants({ status, sharp })}
-            style={{ width: indicatorSize, height: indicatorSize }}
+            style={{ width: indicatorSize, height: indicatorSize, ...(customColour ? { backgroundColor: customColour } : {}) }}
           />
         )}
       </div>

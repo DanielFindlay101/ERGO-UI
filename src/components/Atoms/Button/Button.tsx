@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
   `font-semibold transition-colors focus:outline-none focus-visible:outline-none
-   focus:ring-2 focus:ring-gray-900 disabled:opacity-50 inline-flex items-center justify-center gap-2`,
+   focus:ring-2 focus:ring-gray-900 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2`,
   {
     variants: {
       variant: {
@@ -114,6 +114,7 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   icon?: ReactNode;
   iconPosition?: "left" | "right";
+  customColour?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -128,15 +129,30 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = "left",
       children,
       style,
+      customColour,
       ...props
     },
     ref,
   ) => {
+    const filledStyle = customColour
+      ? { backgroundColor: customColour }
+      : undefined;
+    const outlineStyle = customColour
+      ? { borderColor: customColour, color: customColour }
+      : undefined;
     const button = (
       <button
         ref={ref}
         className={buttonVariants({ variant, size, sharp, outline, className })}
-        style={sharp ? { clipPath: SHARP_BUTTON_CLIP_PATH, ...style } : style}
+        style={
+          sharp
+            ? {
+                clipPath: SHARP_BUTTON_CLIP_PATH,
+                ...(!outline ? filledStyle : outlineStyle),
+                ...style,
+              }
+            : { ...(!outline ? filledStyle : outlineStyle), ...style }
+        }
         {...props}
       >
         {icon && iconPosition === "left" && (
@@ -153,7 +169,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       return (
         <div
           className={sharpOutlineWrapperVariants({ variant })}
-          style={{ clipPath: SHARP_BUTTON_CLIP_PATH }}
+          style={{
+            clipPath: SHARP_BUTTON_CLIP_PATH,
+            ...(customColour ? { backgroundColor: customColour } : {}),
+          }}
         >
           {button}
         </div>

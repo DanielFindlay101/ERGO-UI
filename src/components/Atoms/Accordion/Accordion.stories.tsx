@@ -105,6 +105,15 @@ export const SharpTertiary: Story = {
   },
 };
 
+export const CustomColour: Story = {
+  args: {
+    title: "Custom Colour",
+    children: sampleContent,
+    customColour: "#f97316",
+    defaultOpen: true,
+  },
+};
+
 export const AllVariants: Story = {
   args: { title: "" },
   render: () => (

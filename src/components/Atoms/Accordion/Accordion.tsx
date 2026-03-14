@@ -79,11 +79,12 @@ export interface AccordionProps
     VariantProps<typeof accordionVariants> {
   title: ReactNode;
   defaultOpen?: boolean;
+  customColour?: string;
 }
 
 const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
   (
-    { className, sharp, variant, title, children, defaultOpen, ...props },
+    { className, sharp, variant, title, children, defaultOpen, customColour, ...props },
     ref,
   ) => {
     const details = (
@@ -91,14 +92,14 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
         ref={ref}
         open={defaultOpen}
         className={`group ${accordionVariants({ sharp, variant, className })}`}
-        style={sharp ? { clipPath: SHARP_ACCORDION_CLIP_PATH } : undefined}
+        style={sharp ? { clipPath: SHARP_ACCORDION_CLIP_PATH } : { borderColor: customColour }}
         {...props}
       >
-        <summary className={summaryVariants({ variant })}>
+        <summary className={summaryVariants({ variant })} style={{ backgroundColor: customColour }}>
           <span>{title}</span>
           <ChevronDownIcon className="h-5 w-5 flex-shrink-0 transition-transform duration-200 group-open:rotate-180" />
         </summary>
-        <div className={contentVariants({ variant })}>{children}</div>
+        <div className={contentVariants({ variant })} style={{ borderLeftColor: customColour }}>{children}</div>
       </details>
     );
 
@@ -106,7 +107,7 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
       return (
         <div
           className={wrapperVariants({ variant })}
-          style={{ clipPath: SHARP_ACCORDION_CLIP_PATH }}
+          style={{ backgroundColor: customColour, clipPath: SHARP_ACCORDION_CLIP_PATH }}
         >
           {details}
         </div>

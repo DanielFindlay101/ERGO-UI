@@ -15,6 +15,10 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {
+    variant: {
+      control: "select",
+      options: ["primary", "secondary", "tertiary"],
+    },
     sharp: {
       control: "boolean",
     },
@@ -34,7 +38,53 @@ export const Primary: Story = {
   args: {
     label: "First name",
     placeholder: "Enter text",
+    variant: "primary",
   },
+};
+
+export const Secondary: Story = {
+  args: {
+    label: "First name",
+    placeholder: "Enter text",
+    variant: "secondary",
+  },
+};
+
+export const Tertiary: Story = {
+  args: {
+    label: "First name",
+    placeholder: "Enter text",
+    variant: "tertiary",
+  },
+};
+
+export const SharpSecondary: Story = {
+  args: {
+    label: "First name",
+    placeholder: "Enter text",
+    variant: "secondary",
+    sharp: true,
+  },
+};
+
+export const SharpTertiary: Story = {
+  args: {
+    label: "First name",
+    placeholder: "Enter text",
+    variant: "tertiary",
+    sharp: true,
+  },
+};
+
+export const AllVariants: Story = {
+  args: { label: "", placeholder: "" },
+  render: () => (
+    <div className="flex flex-col gap-4 w-[320px]">
+      <Input label="Primary" placeholder="Enter text" variant="primary" />
+      <Input label="Secondary" placeholder="Enter text" variant="secondary" />
+      <Input label="Tertiary" placeholder="Enter text" variant="tertiary" />
+    </div>
+  ),
 };
 
 export const WithError: Story = {
@@ -125,6 +175,7 @@ export const SharpWithIcon: Story = {
     icon: <MagnifyingGlassIcon className="w-5 h-5" />,
   },
 };
+
 
 export const SharpWithIconLeft: Story = {
   args: {

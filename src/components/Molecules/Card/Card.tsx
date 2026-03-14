@@ -68,21 +68,22 @@ export interface CardProps
     Omit<HTMLAttributes<HTMLDivElement>, "title">,
     VariantProps<typeof cardVariants> {
   title: ReactNode;
+  customColour?: string;
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, sharp, variant, title, children, ...props }, ref) => {
+  ({ className, sharp, variant, title, children, customColour, ...props }, ref) => {
     const card = (
       <div
         ref={ref}
         className={cardVariants({ sharp, variant, className })}
-        style={sharp ? { clipPath: SHARP_CARD_CLIP_PATH } : undefined}
+        style={sharp ? { clipPath: SHARP_CARD_CLIP_PATH } : { borderColor: customColour }}
         {...props}
       >
-        <div className={headerVariants({ variant })}>
+        <div className={headerVariants({ variant })} style={{ backgroundColor: customColour }}>
           <span className="text-lg">{title}</span>
         </div>
-        <div className={bodyVariants({ variant })}>{children}</div>
+        <div className={bodyVariants({ variant })} style={{ borderLeftColor: customColour }}>{children}</div>
       </div>
     );
 
@@ -90,7 +91,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       return (
         <div
           className={wrapperVariants({ variant })}
-          style={{ clipPath: SHARP_CARD_CLIP_PATH }}
+          style={{ backgroundColor: customColour, clipPath: SHARP_CARD_CLIP_PATH }}
         >
           {card}
         </div>

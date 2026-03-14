@@ -33,15 +33,18 @@ const SHARP_BADGE_CLIP_PATH =
   "polygon(6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px)";
 
 export interface BadgeProps
-  extends HTMLAttributes<HTMLSpanElement>, VariantProps<typeof badgeVariants> {}
+  extends HTMLAttributes<HTMLSpanElement>, VariantProps<typeof badgeVariants> {
+  customColour?: string;
+}
 
 const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ className, variant, size, sharp, children, style, ...props }, ref) => {
+  ({ className, variant, size, sharp, children, style, customColour, ...props }, ref) => {
+    const colourStyle = customColour ? { backgroundColor: customColour } : undefined;
     return (
       <span
         ref={ref}
         className={badgeVariants({ variant, size, sharp, className })}
-        style={sharp ? { clipPath: SHARP_BADGE_CLIP_PATH, ...style } : style}
+        style={sharp ? { clipPath: SHARP_BADGE_CLIP_PATH, ...colourStyle, ...style } : { ...colourStyle, ...style }}
         {...props}
       >
         {children}

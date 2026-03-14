@@ -2,14 +2,19 @@ import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const inputVariants = cva(
-  `w-full px-4 py-2 text-base bg-gray-900 border text-gray-200 
+  `w-full py-2 text-base bg-gray-900 border text-gray-200
   transition-colors placeholder:text-gray-500
   focus:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
   {
     variants: {
+      variant: {
+        primary: "",
+        secondary: "",
+        tertiary: "",
+      },
       error: {
         true: "border-red-500",
-        false: "border-emerald-700 focus:ring-2 focus:ring-emerald-500",
+        false: "",
       },
       sharp: {
         true: "rounded-none",
@@ -20,7 +25,13 @@ const inputVariants = cva(
         false: "pr-10 pl-4",
       },
     },
+    compoundVariants: [
+      { variant: "primary", error: false, className: "border-emerald-700 focus:ring-2 focus:ring-emerald-500" },
+      { variant: "secondary", error: false, className: "border-violet-700 focus:ring-2 focus:ring-violet-500" },
+      { variant: "tertiary", error: false, className: "border-blue-700 focus:ring-2 focus:ring-blue-500" },
+    ],
     defaultVariants: {
+      variant: "primary",
       error: false,
       sharp: false,
       iconLeft: false,
@@ -31,20 +42,28 @@ const inputVariants = cva(
 const SHARP_INPUT_CLIP_PATH =
   "polygon(0% 0%, 100% 0%, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0% 100%)";
 
-const sharpWrapperVariants = cva(
-  "inline-block p-px border-emerald-700 focus:ring-2 focus:ring-emerald-500",
-  {
-    variants: {
-      error: {
-        true: "bg-red-500",
-        false: "bg-emerald-700 focus-within:bg-emerald-500 ",
-      },
+const sharpWrapperVariants = cva("inline-block p-px", {
+  variants: {
+    variant: {
+      primary: "",
+      secondary: "",
+      tertiary: "",
     },
-    defaultVariants: {
-      error: false,
+    error: {
+      true: "bg-red-500",
+      false: "",
     },
   },
-);
+  compoundVariants: [
+    { variant: "primary", error: false, className: "bg-emerald-700 focus-within:bg-emerald-500" },
+    { variant: "secondary", error: false, className: "bg-violet-700 focus-within:bg-violet-500" },
+    { variant: "tertiary", error: false, className: "bg-blue-700 focus-within:bg-blue-500" },
+  ],
+  defaultVariants: {
+    variant: "primary",
+    error: false,
+  },
+});
 
 export interface InputProps
   extends
@@ -58,6 +77,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
+      variant,
       error,
       sharp,
       iconLeft,
@@ -76,6 +96,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         placeholder={placeholder}
         className={inputVariants({
+          variant,
           error,
           sharp,
           iconLeft: hasIcon ? iconLeft : undefined,
@@ -110,7 +131,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         <label className="flex flex-col gap-0">
           <span className="text-gray-300">{label}</span>
           <div
-            className={sharpWrapperVariants({ error })}
+            className={sharpWrapperVariants({ variant, error })}
             style={{ clipPath: SHARP_INPUT_CLIP_PATH }}
           >
             {inner}

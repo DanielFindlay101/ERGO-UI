@@ -29,3 +29,9 @@ export const Tertiary: Story = {
     variant: "tertiary",
   },
 };
+
+export const CustomColour: Story = {
+  args: {
+    customColour: "#f97316",
+  },
+};

@@ -42,12 +42,16 @@ export interface ToggleProps
     InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof toggleVariants> {
   sharp?: boolean;
+  customColour?: string;
 }
 
 const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
-  ({ variant, sharp }, ref) => {
+  ({ variant, sharp, customColour }, ref) => {
     return (
-      <div className={toggleVariants({ variant, sharp })}>
+      <div
+        className={`${toggleVariants({ variant, sharp })}${customColour ? " has-[:checked]:[background-color:var(--toggle-color)]" : ""}`}
+        style={customColour ? ({ "--toggle-color": customColour } as React.CSSProperties) : undefined}
+      >
         <span id="slider" className={slideVariants({ sharp })} />
         <input
           ref={ref}

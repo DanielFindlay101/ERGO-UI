@@ -43,6 +43,7 @@ export const Primary: Story = {
     children: "Button",
     variant: "primary",
     size: "md",
+    onClick: () => console.log("Hi"),
   },
 };
 
@@ -205,7 +206,12 @@ export const SharpOutlinePrimary: Story = {
 };
 
 export const SharpOutlineSecondary: Story = {
-  args: { children: "Button", variant: "secondary", sharp: true, outline: true },
+  args: {
+    children: "Button",
+    variant: "secondary",
+    sharp: true,
+    outline: true,
+  },
 };
 
 export const SharpOutlineTertiary: Story = {
@@ -216,14 +222,26 @@ export const SharpOutlineDanger: Story = {
   args: { children: "Button", variant: "danger", sharp: true, outline: true },
 };
 
+export const CustomColour: Story = {
+  args: { children: "Custom Button", customColour: "#f97316", size: "md" },
+};
+
 export const AllOutlineVariants: Story = {
   args: { children: "" },
   render: () => (
     <div className="flex gap-3 items-center">
-      <Button variant="primary" outline>Primary</Button>
-      <Button variant="secondary" outline>Secondary</Button>
-      <Button variant="tertiary" outline>Tertiary</Button>
-      <Button variant="danger" outline>Danger</Button>
+      <Button variant="primary" outline>
+        Primary
+      </Button>
+      <Button variant="secondary" outline>
+        Secondary
+      </Button>
+      <Button variant="tertiary" outline>
+        Tertiary
+      </Button>
+      <Button variant="danger" outline>
+        Danger
+      </Button>
     </div>
   ),
 };
@@ -232,10 +250,18 @@ export const AllOutlineVariantsSharp: Story = {
   args: { children: "" },
   render: () => (
     <div className="flex gap-3 items-center">
-      <Button variant="primary" outline sharp>Primary</Button>
-      <Button variant="secondary" outline sharp>Secondary</Button>
-      <Button variant="tertiary" outline sharp>Tertiary</Button>
-      <Button variant="danger" outline sharp>Danger</Button>
+      <Button variant="primary" outline sharp>
+        Primary
+      </Button>
+      <Button variant="secondary" outline sharp>
+        Secondary
+      </Button>
+      <Button variant="tertiary" outline sharp>
+        Tertiary
+      </Button>
+      <Button variant="danger" outline sharp>
+        Danger
+      </Button>
     </div>
   ),
 };

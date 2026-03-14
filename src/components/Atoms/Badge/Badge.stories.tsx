@@ -58,6 +58,10 @@ export const SharpTertiary: Story = {
   args: { children: "Tertiary", variant: "tertiary", sharp: true },
 };
 
+export const CustomColour: Story = {
+  args: { children: "Custom", customColour: "#f97316" },
+};
+
 export const AllVariants: Story = {
   args: { children: "" },
   render: () => (
