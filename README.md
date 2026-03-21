@@ -10,6 +10,8 @@ Create sharp components by passing in the _sharp_ prop.
 <Button variant='primary' sharp />
 ```
 
+<img alt='custom-card' src='./src/assets/images/SharpButton.png' width='200px' />
+
 ### Mix and match between sharp and curved
 
 Perhaps you want a curved parent component which features a sharp child. Simply pass the sharp prop to whatever component. It's entirely up to you!
@@ -32,7 +34,6 @@ Perhaps you want a curved parent component which features a sharp child. Simply 
       </div>
 ```
 
-<!-- ![custom card](./src/assets/images/CurveSharp.png) -->
 <img alt='custom-card' src='./src/assets/images/CurveSharp.png' width='400px' height='200px' />
 
 ### Want to use your own colour? No problem
@@ -45,5 +46,4 @@ Simply pass in your custom colour and let the component handle the rest
  </Button>
 ```
 
-<!-- ![custom button](./src/assets/images/CustomButton.png) -->
 <img alt='custom-button' src='./src/assets/images/CustomButton.png' width='250px' height='250px' />

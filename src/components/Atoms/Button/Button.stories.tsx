@@ -149,7 +149,7 @@ export const SharpPrimary: Story = {
 
 export const SharpSecondary: Story = {
   args: {
-    children: "Play Free Now",
+    children: "Press me",
     variant: "secondary",
     size: "md",
     sharp: true,
