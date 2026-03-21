@@ -65,11 +65,12 @@ export default function Alert({
 
   return (
     <div
+      role="alert"
       className="flex max-w-[600px]"
       style={sharp ? { clipPath: SHARP_ALERT_CLIP_PATH } : undefined}
     >
       <div className={iconPanelVariants({ variant, sharp })} style={colourStyle}>
-        <span>{alertIcon}</span>
+        <span aria-hidden="true">{alertIcon}</span>
       </div>
       <div className={rightPanelVariants({ sharp })}>
         <div className={headerVariants({ variant, sharp })} style={colourStyle}>

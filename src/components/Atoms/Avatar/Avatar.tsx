@@ -73,6 +73,8 @@ const Avatar = forwardRef<HTMLImageElement, AvatarProps>(
         />
         {status && (
           <span
+            role="img"
+            aria-label={status}
             className={indicatorVariants({ status, sharp })}
             style={{ width: indicatorSize, height: indicatorSize, ...(customColour ? { backgroundColor: customColour } : {}) }}
           />

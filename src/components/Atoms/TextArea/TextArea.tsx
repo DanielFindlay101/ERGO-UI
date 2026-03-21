@@ -97,6 +97,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       <textarea
         ref={ref}
         rows={4}
+        aria-invalid={error === true ? true : undefined}
         className={textAreaVariants({ variant, error, sharp, className })}
         style={sharp ? { clipPath: SHARP_TEXTAREA_CLIP_PATH, ...style } : style}
         {...props}

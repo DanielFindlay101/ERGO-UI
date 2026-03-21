@@ -97,7 +97,7 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
       >
         <summary className={summaryVariants({ variant })} style={{ backgroundColor: customColour }}>
           <span>{title}</span>
-          <ChevronDownIcon className="h-5 w-5 flex-shrink-0 transition-transform duration-200 group-open:rotate-180" />
+          <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-shrink-0 transition-transform duration-200 group-open:rotate-180" />
         </summary>
         <div className={contentVariants({ variant })} style={{ borderLeftColor: customColour }}>{children}</div>
       </details>

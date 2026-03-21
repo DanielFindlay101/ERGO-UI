@@ -156,11 +156,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {icon && iconPosition === "left" && (
-          <span className="inline-flex">{icon}</span>
+          <span className="inline-flex" aria-hidden="true">{icon}</span>
         )}
         {children}
         {icon && iconPosition === "right" && (
-          <span className="inline-flex">{icon}</span>
+          <span className="inline-flex" aria-hidden="true">{icon}</span>
         )}
       </button>
     );

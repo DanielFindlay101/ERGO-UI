@@ -56,6 +56,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       <div className="relative">
         <select
           ref={ref}
+          aria-invalid={error === true ? true : undefined}
           className={selectVariants({ error, sharp, className })}
           style={
             sharp
@@ -66,7 +67,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         >
           {children}
         </select>
-        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
+        <span aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
           <ChevronDownIcon className="w-4 h-4" />
         </span>
       </div>

@@ -119,6 +119,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <input
         ref={ref}
         placeholder={placeholder}
+        aria-invalid={error === true ? true : undefined}
         className={inputVariants({
           variant,
           error,
@@ -133,6 +134,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     const iconEl = hasIcon && (
       <span
+        aria-hidden="true"
         className={`absolute top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none ${
           iconLeft ? "left-3" : "right-3"
         }`}

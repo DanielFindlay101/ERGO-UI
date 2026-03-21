@@ -223,7 +223,7 @@ export const SharpOutlineDanger: Story = {
 };
 
 export const CustomColour: Story = {
-  args: { children: "Custom Button", customColour: "#f97316", size: "md" },
+  args: { children: "Custom Button", customColour: "#e60076", size: "md" },
 };
 
 export const AllOutlineVariants: Story = {

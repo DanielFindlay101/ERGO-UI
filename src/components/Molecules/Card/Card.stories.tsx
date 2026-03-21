@@ -97,15 +97,15 @@ export const WithToggle: Story = {
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <span>Email notifications</span>
-          <Toggle />
+          <Toggle sharp />
         </div>
         <div className="flex items-center justify-between">
           <span>Push notifications</span>
-          <Toggle />
+          <Toggle sharp />
         </div>
         <div className="flex items-center justify-between">
           <span>SMS alerts</span>
-          <Toggle />
+          <Toggle sharp />
         </div>
       </div>
     </Card>

@@ -46,19 +46,20 @@ export interface ToggleProps
 }
 
 const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
-  ({ variant, sharp, customColour }, ref) => {
+  ({ variant, sharp, customColour, "aria-label": ariaLabel, ...props }, ref) => {
     return (
       <div
         className={`${toggleVariants({ variant, sharp })}${customColour ? " has-[:checked]:[background-color:var(--toggle-color)]" : ""}`}
         style={customColour ? ({ "--toggle-color": customColour } as React.CSSProperties) : undefined}
       >
-        <span id="slider" className={slideVariants({ sharp })} />
+        <span aria-hidden="true" className={slideVariants({ sharp })} />
         <input
           ref={ref}
           name="track"
           type="checkbox"
-          aria-label="Use setting"
+          aria-label={ariaLabel ?? "Toggle"}
           className="absolute inset-0 size-full appearance-none focus:outline-hidden"
+          {...props}
         />
       </div>
     );

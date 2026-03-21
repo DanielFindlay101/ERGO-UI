@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useEffect, useId, useRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -61,6 +61,7 @@ const Modal = ({
   customColour,
 }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -92,6 +93,7 @@ const Modal = ({
   return (
     <dialog
       ref={dialogRef}
+      aria-labelledby={titleId}
       onClick={handleDialogClick}
       onCancel={(e) => {
         e.preventDefault();
@@ -102,7 +104,7 @@ const Modal = ({
     >
       <div onClick={(e) => e.stopPropagation()} className="flex flex-col">
         <header className={headerVariants({ variant })} style={colourStyle}>
-          <h2 className="text-white font-semibold">{title}</h2>
+          <h2 id={titleId} className="text-white font-semibold">{title}</h2>
           <button
             onClick={onClose}
             className="text-white/70 hover:text-white transition-colors ml-4 flex-shrink-0"

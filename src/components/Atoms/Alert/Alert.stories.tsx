@@ -26,8 +26,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const BODY =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum ex molestiae quaerat sed dolor? Quaerat reprehenderit, rem accusamus error, maxime cupiditate.";
+const BODY = "Lorem ipsum dolor sit amet consectetur adipisicing elit";
 
 export const Complete: Story = {
   args: {
@@ -119,10 +118,30 @@ export const AllVariants: Story = {
   args: { headingText: "", bodyText: "" },
   render: () => (
     <div className="flex flex-col gap-4 w-[600px]">
-      <Alert variant="complete" headingText="Success" bodyText={BODY} alertIcon={<CheckCircleIcon className="w-8 h-8 text-white" />} />
-      <Alert variant="info" headingText="Information" bodyText={BODY} alertIcon={<InformationCircleIcon className="w-8 h-8 text-white" />} />
-      <Alert variant="secondary" headingText="Notice" bodyText={BODY} alertIcon={<ExclamationTriangleIcon className="w-8 h-8 text-white" />} />
-      <Alert variant="danger" headingText="Error" bodyText={BODY} alertIcon={<XCircleIcon className="w-8 h-8 text-white" />} />
+      <Alert
+        variant="complete"
+        headingText="Success"
+        bodyText={BODY}
+        alertIcon={<CheckCircleIcon className="w-8 h-8 text-white" />}
+      />
+      <Alert
+        variant="info"
+        headingText="Information"
+        bodyText={BODY}
+        alertIcon={<InformationCircleIcon className="w-8 h-8 text-white" />}
+      />
+      <Alert
+        variant="secondary"
+        headingText="Notice"
+        bodyText={BODY}
+        alertIcon={<ExclamationTriangleIcon className="w-8 h-8 text-white" />}
+      />
+      <Alert
+        variant="danger"
+        headingText="Error"
+        bodyText={BODY}
+        alertIcon={<XCircleIcon className="w-8 h-8 text-white" />}
+      />
     </div>
   ),
 };
@@ -131,10 +150,34 @@ export const AllVariantsSharp: Story = {
   args: { headingText: "", bodyText: "" },
   render: () => (
     <div className="flex flex-col gap-4 w-[600px]">
-      <Alert variant="complete" sharp headingText="Success" bodyText={BODY} alertIcon={<CheckCircleIcon className="w-8 h-8 text-white" />} />
-      <Alert variant="info" sharp headingText="Information" bodyText={BODY} alertIcon={<InformationCircleIcon className="w-8 h-8 text-white" />} />
-      <Alert variant="secondary" sharp headingText="Notice" bodyText={BODY} alertIcon={<ExclamationTriangleIcon className="w-8 h-8 text-white" />} />
-      <Alert variant="danger" sharp headingText="Error" bodyText={BODY} alertIcon={<XCircleIcon className="w-8 h-8 text-white" />} />
+      <Alert
+        variant="complete"
+        sharp
+        headingText="Success"
+        bodyText={BODY}
+        alertIcon={<CheckCircleIcon className="w-8 h-8 text-white" />}
+      />
+      <Alert
+        variant="info"
+        sharp
+        headingText="Information"
+        bodyText={BODY}
+        alertIcon={<InformationCircleIcon className="w-8 h-8 text-white" />}
+      />
+      <Alert
+        variant="secondary"
+        sharp
+        headingText="Notice"
+        bodyText={BODY}
+        alertIcon={<ExclamationTriangleIcon className="w-8 h-8 text-white" />}
+      />
+      <Alert
+        variant="danger"
+        sharp
+        headingText="Error"
+        bodyText={BODY}
+        alertIcon={<XCircleIcon className="w-8 h-8 text-white" />}
+      />
     </div>
   ),
 };
