@@ -32,7 +32,8 @@ Perhaps you want a curved parent component which features a sharp child. Simply 
       </div>
 ```
 
-![custom card](./src/assets/images/CurveSharp.png)
+<!-- ![custom card](./src/assets/images/CurveSharp.png) -->
+<img alt='custom-card' src='./src/assets/images/CurveSharp.png' width='200px' />
 
 ### Want to use your own colour? No problem
 
@@ -44,4 +45,5 @@ Simply pass in your custom colour and let the component handle the rest
  </Button>
 ```
 
-![custom button](./src/assets/images/CustomButton.png)
+<!-- ![custom button](./src/assets/images/CustomButton.png) -->
+<img alt='custom-button' src='./src/assets/images/CustomButton.png' width='100px' />
