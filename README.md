@@ -31,3 +31,17 @@ Perhaps you want a curved parent component which features a sharp child. Simply 
         </div>
       </div>
 ```
+
+![custom card](./src/assets/images/CurveSharp.png)
+
+### Want to use your own colour? No problem
+
+Simply pass in your custom colour and let the component handle the rest
+
+```typescript
+  <Button customColour='#e60076' sharp>
+        Custom
+ </Button>
+```
+
+![custom button](./src/assets/images/CustomButton.png)

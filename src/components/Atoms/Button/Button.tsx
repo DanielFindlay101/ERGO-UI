@@ -36,7 +36,7 @@ const buttonVariants = cva(
         sharp: true,
         className: "bg-gray-950 border-transparent hover:bg-gray-800",
       },
-      // Per-variant outline colours
+      // Per-variant outline Colors
       {
         outline: true,
         variant: "primary",
@@ -114,7 +114,7 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   icon?: ReactNode;
   iconPosition?: "left" | "right";
-  customColour?: string;
+  customColor?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -129,16 +129,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = "left",
       children,
       style,
-      customColour,
+      customColor,
       ...props
     },
     ref,
   ) => {
-    const filledStyle = customColour
-      ? { backgroundColor: customColour }
+    const filledStyle = customColor
+      ? { backgroundColor: customColor }
       : undefined;
-    const outlineStyle = customColour
-      ? { borderColor: customColour, color: customColour }
+    const outlineStyle = customColor
+      ? { borderColor: customColor, color: customColor }
       : undefined;
     const button = (
       <button
@@ -156,11 +156,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {icon && iconPosition === "left" && (
-          <span className="inline-flex" aria-hidden="true">{icon}</span>
+          <span className="inline-flex" aria-hidden="true">
+            {icon}
+          </span>
         )}
         {children}
         {icon && iconPosition === "right" && (
-          <span className="inline-flex" aria-hidden="true">{icon}</span>
+          <span className="inline-flex" aria-hidden="true">
+            {icon}
+          </span>
         )}
       </button>
     );
@@ -171,7 +175,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className={sharpOutlineWrapperVariants({ variant })}
           style={{
             clipPath: SHARP_BUTTON_CLIP_PATH,
-            ...(customColour ? { backgroundColor: customColour } : {}),
+            ...(customColor ? { backgroundColor: customColor } : {}),
           }}
         >
           {button}
