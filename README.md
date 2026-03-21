@@ -46,4 +46,4 @@ Simply pass in your custom colour and let the component handle the rest
 ```
 
 <!-- ![custom button](./src/assets/images/CustomButton.png) -->
-<img alt='custom-button' src='./src/assets/images/CustomButton.png' width='100px' height='100px' />
+<img alt='custom-button' src='./src/assets/images/CustomButton.png' width='250px' height='250px' />
