@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Card from "./Card";
 import Toggle from "../../Atoms/Toggle/Toggle";
 import Button from "../../Atoms/Button/Button";
-
+import { InboxIcon } from "@heroicons/react/24/outline";
 const meta = {
   title: "Components/Molecules/Card",
   component: Card,
@@ -115,7 +115,11 @@ export const WithToggle: Story = {
 export const WithToggleSharp: Story = {
   args: { title: "" },
   render: () => (
-    <Card title="Notifications" sharp>
+    <Card
+      title="Notifications"
+      headerIcon={<InboxIcon className="w-4 h-4" />}
+      sharp
+    >
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <span>Email notifications</span>

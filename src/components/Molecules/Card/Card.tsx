@@ -24,15 +24,18 @@ const cardVariants = cva("w-full text-white overflow-hidden", {
   },
 });
 
-const headerVariants = cva("w-full px-4 py-3 font-semibold text-white", {
-  variants: {
-    variant: {
-      primary: "bg-emerald-500",
-      secondary: "bg-violet-700",
-      tertiary: "bg-blue-500",
+const headerVariants = cva(
+  "w-full px-4 py-3 flex justify-between items-center font-semibold text-white",
+  {
+    variants: {
+      variant: {
+        primary: "bg-emerald-500",
+        secondary: "bg-violet-700",
+        tertiary: "bg-blue-500",
+      },
     },
   },
-});
+);
 
 const bodyVariants = cva("border-l-4 px-4 py-4 text-slate-200 bg-gray-500", {
   variants: {
@@ -69,21 +72,51 @@ export interface CardProps
     VariantProps<typeof cardVariants> {
   title: ReactNode;
   customColour?: string;
+  headerIcon?: ReactNode;
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, sharp, variant, title, children, customColour, ...props }, ref) => {
+  (
+    {
+      className,
+      sharp,
+      variant,
+      title,
+      children,
+      customColour,
+      headerIcon,
+      ...props
+    },
+    ref,
+  ) => {
     const card = (
       <div
         ref={ref}
         className={cardVariants({ sharp, variant, className })}
-        style={sharp ? { clipPath: SHARP_CARD_CLIP_PATH } : { borderColor: customColour }}
+        style={
+          sharp
+            ? { clipPath: SHARP_CARD_CLIP_PATH }
+            : { borderColor: customColour }
+        }
         {...props}
       >
-        <div className={headerVariants({ variant })} style={{ backgroundColor: customColour }}>
-          <span className="text-lg">{title}</span>
+        <div
+          className={headerVariants({ variant })}
+          style={{ backgroundColor: customColour }}
+        >
+          <h4 className="text-lg">{title}</h4>
+          {headerIcon && (
+            <span aria-hidden="true" className="text-white">
+              {headerIcon}
+            </span>
+          )}
         </div>
-        <div className={bodyVariants({ variant })} style={{ borderLeftColor: customColour }}>{children}</div>
+        <div
+          className={bodyVariants({ variant })}
+          style={{ borderLeftColor: customColour }}
+        >
+          {children}
+        </div>
       </div>
     );
 
@@ -91,7 +124,10 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       return (
         <div
           className={wrapperVariants({ variant })}
-          style={{ backgroundColor: customColour, clipPath: SHARP_CARD_CLIP_PATH }}
+          style={{
+            backgroundColor: customColour,
+            clipPath: SHARP_CARD_CLIP_PATH,
+          }}
         >
           {card}
         </div>

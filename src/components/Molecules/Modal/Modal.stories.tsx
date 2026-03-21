@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Modal, { type ModalProps } from "./Modal";
 import Button from "../../Atoms/Button/Button";
+import { TrashIcon } from "@heroicons/react/24/solid";
 
 const ModalDemo = ({
   children,
@@ -35,7 +36,7 @@ const meta = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["primary", "secondary", "tertiary"],
+      options: ["primary", "secondary", "tertiary", "danger"],
     },
     sharp: { control: "boolean" },
     title: { control: "text" },
@@ -49,6 +50,7 @@ const meta = {
       variant={args.variant}
       sharp={args.sharp}
       customColour={args.customColour}
+      headerIcon={args.headerIcon}
     >
       {defaultChildren}
     </ModalDemo>
@@ -68,6 +70,13 @@ export const Secondary: Story = {
 
 export const Tertiary: Story = {
   args: { title: "Confirm Action", variant: "tertiary" },
+};
+export const Danger: Story = {
+  args: {
+    title: "Confirm Action",
+    variant: "danger",
+    headerIcon: <TrashIcon className="w-5 h-5" />,
+  },
 };
 
 export const Sharp: Story = {

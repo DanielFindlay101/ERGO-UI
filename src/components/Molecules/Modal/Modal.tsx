@@ -10,6 +10,7 @@ const headerVariants = cva(
         primary: "bg-emerald-500",
         secondary: "bg-violet-700",
         tertiary: "bg-blue-500",
+        danger: "bg-red-500",
       },
     },
     defaultVariants: {
@@ -49,6 +50,7 @@ export interface ModalProps
   title: string;
   children: ReactNode;
   customColour?: string;
+  headerIcon?: ReactNode;
 }
 
 const Modal = ({
@@ -59,6 +61,7 @@ const Modal = ({
   variant,
   sharp,
   customColour,
+  headerIcon,
 }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
@@ -104,10 +107,19 @@ const Modal = ({
     >
       <div onClick={(e) => e.stopPropagation()} className="flex flex-col">
         <header className={headerVariants({ variant })} style={colourStyle}>
-          <h2 id={titleId} className="text-white font-semibold">{title}</h2>
+          <div className="flex gap-2 items-center">
+            {headerIcon && (
+              <span aria-hidden="true" className="text-white">
+                {headerIcon}
+              </span>
+            )}
+            <h2 id={titleId} className="text-white font-semibold">
+              {title}
+            </h2>
+          </div>
           <button
             onClick={onClose}
-            className="text-white/70 hover:text-white transition-colors ml-4 flex-shrink-0"
+            className="text-white hover:text-white/50 transition-colors ml-4 flex-shrink-0"
             aria-label="Close modal"
           >
             <XMarkIcon className="w-5 h-5" />
