@@ -33,7 +33,7 @@ Perhaps you want a curved parent component which features a sharp child. Simply 
 ```
 
 <!-- ![custom card](./src/assets/images/CurveSharp.png) -->
-<img alt='custom-card' src='./src/assets/images/CurveSharp.png' width='200px' />
+<img alt='custom-card' src='./src/assets/images/CurveSharp.png' width='400px' height='200px' />
 
 ### Want to use your own colour? No problem
 
@@ -41,9 +41,9 @@ Simply pass in your custom colour and let the component handle the rest
 
 ```typescript
   <Button customColour='#e60076' sharp>
-        Custom
+        Custom Button
  </Button>
 ```
 
 <!-- ![custom button](./src/assets/images/CustomButton.png) -->
-<img alt='custom-button' src='./src/assets/images/CustomButton.png' width='100px' />
+<img alt='custom-button' src='./src/assets/images/CustomButton.png' width='100px' height='100px' />
