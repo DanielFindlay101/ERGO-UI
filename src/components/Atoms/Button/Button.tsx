@@ -10,8 +10,7 @@ const buttonVariants = cva(
         primary: "",
         secondary: "",
         tertiary: "",
-        ghost:
-          "bg-transparent text:gray-800 hover:text-white dark:text-slate-200 hover:bg-gray-600 focus:ring-gray-400",
+        ghost: "",
         danger: "",
       },
       size: {
@@ -74,6 +73,12 @@ const buttonVariants = cva(
         variant: "secondary",
         className:
           "bg-violet-700 text-white hover:bg-violet-800 focus:ring-violet-500",
+      },
+      {
+        outline: false,
+        variant: "ghost",
+        className:
+          "bg-transparent text:gray-800 hover:text-slate-200 dark:text-slate-200 hover:bg-gray-600 focus:ring-gray-400",
       },
       {
         outline: false,
