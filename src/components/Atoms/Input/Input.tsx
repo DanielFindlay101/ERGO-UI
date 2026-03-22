@@ -2,7 +2,7 @@ import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const inputVariants = cva(
-  `w-full py-2 bg-white dark:bg-gray-900 border text-gray-800 dark:text-gray-400
+  `w-full py-2 bg-white dark:bg-gray-900 border-2 text-gray-800 dark:text-gray-400
   transition-colors placeholder:text-gray-500
   focus:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
   {
@@ -13,7 +13,7 @@ const inputVariants = cva(
         tertiary: "",
       },
       error: {
-        true: "border-red-500",
+        true: "border-red-500 hover:border-red-600 focus:ring-2 focus:ring-red-400",
         false: "",
       },
       sharp: {
@@ -29,17 +29,20 @@ const inputVariants = cva(
       {
         variant: "primary",
         error: false,
-        className: "border-emerald-700 focus:ring-2 focus:ring-emerald-500",
+        className:
+          "border-emerald-700 hover:border-emerald-600 focus:ring-2 focus:ring-emerald-500",
       },
       {
         variant: "secondary",
         error: false,
-        className: "border-violet-700 focus:ring-2 focus:ring-violet-500",
+        className:
+          "border-violet-700 hover:border-violet-800 focus:ring-2 focus:ring-violet-500",
       },
       {
         variant: "tertiary",
         error: false,
-        className: "border-blue-700 focus:ring-2 focus:ring-blue-500",
+        className:
+          "border-blue-700 hover:border-blue-600 focus:ring-2 focus:ring-blue-500",
       },
     ],
     defaultVariants: {
@@ -54,7 +57,7 @@ const inputVariants = cva(
 const SHARP_INPUT_CLIP_PATH =
   "polygon(0% 0%, 100% 0%, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0% 100%)";
 
-const sharpWrapperVariants = cva("inline-block p-px", {
+const sharpWrapperVariants = cva("inline-block p-[1.5px]", {
   variants: {
     variant: {
       primary: "",
@@ -62,7 +65,7 @@ const sharpWrapperVariants = cva("inline-block p-px", {
       tertiary: "",
     },
     error: {
-      true: "bg-red-500",
+      true: "bg-red-500 focus:ring-2 focus:ring-red-400",
       false: "",
     },
   },

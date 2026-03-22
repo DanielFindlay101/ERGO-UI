@@ -1,7 +1,7 @@
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
-const cardVariants = cva("w-full text-white overflow-hidden", {
+const cardVariants = cva("w-full overflow-hidden", {
   variants: {
     variant: {
       primary: "bg-emerald-500",
@@ -10,7 +10,7 @@ const cardVariants = cva("w-full text-white overflow-hidden", {
     },
     sharp: {
       true: "rounded-none",
-      false: "rounded-lg border",
+      false: "rounded-lg border-2",
     },
   },
   compoundVariants: [
@@ -37,20 +37,23 @@ const headerVariants = cva(
   },
 );
 
-const bodyVariants = cva("border-l-4 px-4 py-4 text-slate-200 bg-gray-500", {
-  variants: {
-    variant: {
-      primary: "border-l-emerald-500",
-      secondary: "border-l-violet-700",
-      tertiary: "border-l-blue-500",
+const bodyVariants = cva(
+  "border-l-4 px-4 py-4 text-slate-600 dark:text-slate-200 bg-gray-200 dark:bg-gray-500",
+  {
+    variants: {
+      variant: {
+        primary: "border-l-emerald-500",
+        secondary: "border-l-violet-700",
+        tertiary: "border-l-blue-500",
+      },
+    },
+    defaultVariants: {
+      variant: "primary",
     },
   },
-  defaultVariants: {
-    variant: "primary",
-  },
-});
+);
 
-const wrapperVariants = cva("block p-px", {
+const wrapperVariants = cva("block p-[2px]", {
   variants: {
     variant: {
       primary: "bg-emerald-500",

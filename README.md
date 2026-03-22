@@ -1,6 +1,6 @@
 # ERGO-UI
 
-A modern/futuristic componet library built using React, Typescript and Tailwindcss
+A modern/futuristic component library built using React, Typescript and Tailwindcss
 
 ## Sharp Components
 

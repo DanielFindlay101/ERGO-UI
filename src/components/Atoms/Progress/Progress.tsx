@@ -41,6 +41,7 @@ export interface ProgressProps
   value: number;
   type?: "bar" | "circular";
   showLabel?: boolean;
+  label?: string;
   customColour?: string;
 }
 
@@ -54,6 +55,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
       value,
       type = "bar",
       showLabel = false,
+      label,
       customColour,
       style,
       ...props
@@ -73,50 +75,55 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
       const center = diameter / 2;
 
       return (
-        <div
-          ref={ref}
-          role="progressbar"
-          aria-valuenow={clampedValue}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          className={`relative inline-flex items-center justify-center${className ? ` ${className}` : ""}`}
-          style={{ width: diameter, height: diameter, ...style }}
-          {...props}
-        >
-          <svg
-            width={diameter}
-            height={diameter}
-            style={{ transform: "rotate(-90deg)" }}
+        <div className="flex flex-col space-y-2">
+          <span className="text-base text-gray-800 dark:text-gray-300">
+            {label}
+          </span>
+          <div
+            ref={ref}
+            role="progressbar"
+            aria-valuenow={clampedValue}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            className={`relative inline-flex items-center justify-center${className ? ` ${className}` : ""}`}
+            style={{ width: diameter, height: diameter, ...style }}
+            {...props}
           >
-            <circle
-              cx={center}
-              cy={center}
-              r={radius}
-              fill="none"
-              stroke="#1f2937"
-              strokeWidth={strokeWidth}
-            />
-            <circle
-              cx={center}
-              cy={center}
-              r={radius}
-              fill="none"
-              stroke={color}
-              strokeWidth={strokeWidth}
-              strokeDasharray={circumference}
-              strokeDashoffset={dashOffset}
-              strokeLinecap={sharp ? "butt" : "round"}
-              style={{ transition: "stroke-dashoffset 0.5s ease" }}
-            />
-          </svg>
-          {showLabel && (
-            <span
-              className="absolute text-gray-800 dark:text-gray-300 font-semibold tabular-nums"
-              style={{ fontSize: Math.round(diameter * 0.2) }}
+            <svg
+              width={diameter}
+              height={diameter}
+              style={{ transform: "rotate(-90deg)" }}
             >
-              {clampedValue}%
-            </span>
-          )}
+              <circle
+                cx={center}
+                cy={center}
+                r={radius}
+                fill="none"
+                stroke="#1f2937"
+                strokeWidth={strokeWidth}
+              />
+              <circle
+                cx={center}
+                cy={center}
+                r={radius}
+                fill="none"
+                stroke={color}
+                strokeWidth={strokeWidth}
+                strokeDasharray={circumference}
+                strokeDashoffset={dashOffset}
+                strokeLinecap={sharp ? "butt" : "round"}
+                style={{ transition: "stroke-dashoffset 0.5s ease" }}
+              />
+            </svg>
+            {showLabel && (
+              <span
+                className="absolute text-gray-800 dark:text-gray-300 font-semibold tabular-nums"
+                style={{ fontSize: Math.round(diameter * 0.2) }}
+              >
+                {clampedValue}%
+              </span>
+            )}
+          </div>
         </div>
       );
     }
@@ -126,29 +133,34 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
     const roundedClass = sharp ? "rounded-none" : "rounded-full";
 
     return (
-      <div
-        ref={ref}
-        className={`flex items-center gap-2${className ? ` ${className}` : ""}`}
-        style={style}
-        {...props}
-      >
+      <div className="space-y-1">
+        <span className="text-sm text-gray-800 dark:text-gray-300">
+          {label}
+        </span>
         <div
-          role="progressbar"
-          aria-valuenow={clampedValue}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          className={`flex-1 overflow-hidden bg-gray-700 ${heightClass} ${roundedClass}`}
+          ref={ref}
+          className={`flex items-center gap-2${className ? ` ${className}` : ""}`}
+          style={style}
+          {...props}
         >
           <div
-            className={`h-full ${roundedClass} transition-all duration-500`}
-            style={{ width: `${clampedValue}%`, backgroundColor: color }}
-          />
+            role="progressbar"
+            aria-valuenow={clampedValue}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            className={`flex-1 overflow-hidden bg-gray-700 ${heightClass} ${roundedClass}`}
+          >
+            <div
+              className={`h-full ${roundedClass} transition-all duration-500`}
+              style={{ width: `${clampedValue}%`, backgroundColor: color }}
+            />
+          </div>
+          {showLabel && (
+            <span className="text-sm text-gray-800 dark:text-gray-300 tabular-nums min-w-[3ch] text-right">
+              {clampedValue}%
+            </span>
+          )}
         </div>
-        {showLabel && (
-          <span className="text-sm text-gray-800 dark:text-gray-300 tabular-nums min-w-[3ch] text-right">
-            {clampedValue}%
-          </span>
-        )}
       </div>
     );
   },

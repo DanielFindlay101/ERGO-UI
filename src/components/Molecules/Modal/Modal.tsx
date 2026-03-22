@@ -21,7 +21,7 @@ const headerVariants = cva(
 
 const dialogVariants = cva(
   `open:flex open:flex-col p-0 border-none outline-none
-   bg-gray-500
+   dark:bg-gray-500 bg-gray-200 text-slate-600 dark:text-slate-200
    w-full max-w-lg
    shadow-2xl
    backdrop:bg-black/60`,
@@ -125,7 +125,7 @@ const Modal = ({
             <XMarkIcon className="w-5 h-5" />
           </button>
         </header>
-        <div className="px-6 py-5 text-gray-300">{children}</div>
+        <div className="px-6 py-5 ">{children}</div>
       </div>
     </dialog>
   );

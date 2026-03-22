@@ -3,14 +3,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
   `font-semibold transition-colors focus:outline-none focus-visible:outline-none
-   focus:ring-2 focus:ring-gray-900 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2`,
+   focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2`,
   {
     variants: {
       variant: {
         primary: "",
         secondary: "",
         tertiary: "",
-        ghost: "bg-transparent text-slate-200 hover:bg-gray-600",
+        ghost:
+          "bg-transparent text:gray-800 hover:text-white dark:text-slate-200 hover:bg-gray-600 focus:ring-gray-400",
         danger: "",
       },
       size: {
@@ -29,7 +30,7 @@ const buttonVariants = cva(
     },
     compoundVariants: [
       // Non-sharp outline: transparent bg
-      { outline: true, sharp: false, className: "bg-transparent" },
+      { outline: true, sharp: false, className: "bg-transparent border-2" },
       // Sharp outline: dark bg so only the wrapper's 1px edge shows as the border
       {
         outline: true,
@@ -41,44 +42,49 @@ const buttonVariants = cva(
         outline: true,
         variant: "primary",
         className:
-          "text-emerald-500 border-emerald-500 hover:border-emerald-500/75",
+          "text-emerald-500 hover:text-emerald-600 border-emerald-500 hover:border-emerald-600 focus:ring-emerald-400",
       },
       {
         outline: true,
         variant: "secondary",
         className:
-          "text-violet-700 border-violet-700 hover:border-violet-700/75",
+          "text-violet-700 hover:text-violet-800 border-violet-700 hover:border-violet-800 focus:ring-violet-500",
       },
       {
         outline: true,
         variant: "tertiary",
-        className: "text-blue-500 border-blue-500 hover:border-blue-500/75",
+        className:
+          "text-blue-500 hover:text-blue-600 border-blue-500 hover:border-blue-600 focus:ring-blue-500",
       },
       {
         outline: true,
         variant: "danger",
-        className: "text-red-500 border-red-500 hover:border-red-500/75",
+        className:
+          "text-red-500 hover:text-red-600 border-red-500 hover:border-red-600 focus:ring-red-400",
       },
       // Filled variants
       {
         outline: false,
         variant: "primary",
-        className: "bg-emerald-500 text-white hover:bg-emerald-600",
+        className:
+          "bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-emerald-400",
       },
       {
         outline: false,
         variant: "secondary",
-        className: "bg-violet-700 text-white hover:bg-violet-800",
+        className:
+          "bg-violet-700 text-white hover:bg-violet-800 focus:ring-violet-500",
       },
       {
         outline: false,
         variant: "tertiary",
-        className: "bg-blue-500 text-white hover:bg-blue-600",
+        className:
+          "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-400",
       },
       {
         outline: false,
         variant: "danger",
-        className: "bg-red-500 text-white hover:bg-red-600",
+        className: "bg-red-500 text-white hover:bg-red-600 focus:ring-red-400",
       },
     ],
     defaultVariants: {

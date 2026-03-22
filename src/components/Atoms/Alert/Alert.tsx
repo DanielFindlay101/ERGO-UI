@@ -33,15 +33,18 @@ const headerVariants = cva("px-4 py-2", {
   defaultVariants: { variant: "complete", sharp: false },
 });
 
-const rightPanelVariants = cva("bg-gray-500 flex-1", {
-  variants: {
-    sharp: {
-      true: "",
-      false: "rounded-r-2xl",
+const rightPanelVariants = cva(
+  "text-slate-600 dark:text-slate-200 bg-gray-200 dark:bg-gray-500 flex-1",
+  {
+    variants: {
+      sharp: {
+        true: "",
+        false: "rounded-r-2xl",
+      },
     },
+    defaultVariants: { sharp: false },
   },
-  defaultVariants: { sharp: false },
-});
+);
 
 const SHARP_ALERT_CLIP_PATH =
   "polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px)";
@@ -61,7 +64,9 @@ export default function Alert({
   bodyText,
   customColour,
 }: AlertProps) {
-  const colourStyle = customColour ? { backgroundColor: customColour } : undefined;
+  const colourStyle = customColour
+    ? { backgroundColor: customColour }
+    : undefined;
 
   return (
     <div
@@ -69,15 +74,20 @@ export default function Alert({
       className="flex max-w-[600px]"
       style={sharp ? { clipPath: SHARP_ALERT_CLIP_PATH } : undefined}
     >
-      <div className={iconPanelVariants({ variant, sharp })} style={colourStyle}>
+      <div
+        className={iconPanelVariants({ variant, sharp })}
+        style={colourStyle}
+      >
         <span aria-hidden="true">{alertIcon}</span>
       </div>
       <div className={rightPanelVariants({ sharp })}>
         <div className={headerVariants({ variant, sharp })} style={colourStyle}>
-          <span className="text-white text-lg font-semibold">{headingText}</span>
+          <span className="text-white text-lg font-semibold">
+            {headingText}
+          </span>
         </div>
         <div className="p-4">
-          <p className="text-slate-200">{bodyText}</p>
+          <p>{bodyText}</p>
         </div>
       </div>
     </div>

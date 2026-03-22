@@ -7,7 +7,10 @@ const meta = {
   parameters: { layout: "centered" },
   tags: ["autodocs"],
   argTypes: {
-    variant: { control: "select", options: ["primary", "secondary", "tertiary"] },
+    variant: {
+      control: "select",
+      options: ["primary", "secondary", "tertiary"],
+    },
     size: { control: "select", options: ["sm", "md", "lg"] },
     type: { control: "select", options: ["bar", "circular"] },
     sharp: { control: "boolean" },
@@ -104,7 +107,7 @@ export const AllSharpVariants: Story = {
   args: { value: 0 },
   render: () => (
     <div className="flex flex-col gap-4 w-[320px]">
-      <Progress value={65} variant="primary" sharp showLabel />
+      <Progress label="Test" value={65} variant="primary" sharp showLabel />
       <Progress value={45} variant="secondary" sharp showLabel />
       <Progress value={80} variant="tertiary" sharp showLabel />
     </div>
@@ -112,7 +115,7 @@ export const AllSharpVariants: Story = {
 };
 
 export const CircularDefault: Story = {
-  args: { value: 65, type: "circular", showLabel: true },
+  args: { value: 65, type: "circular", showLabel: true, label: "Test" },
 };
 
 export const CircularSecondary: Story = {
@@ -128,16 +131,39 @@ export const CircularSharp: Story = {
 };
 
 export const CircularCustomColour: Story = {
-  args: { value: 65, type: "circular", customColour: "#f97316", showLabel: true },
+  args: {
+    value: 65,
+    type: "circular",
+    customColour: "#f97316",
+    showLabel: true,
+  },
 };
 
 export const AllCircularVariants: Story = {
   args: { value: 0 },
   render: () => (
     <div className="flex gap-6 items-center justify-center">
-      <Progress value={65} type="circular" variant="primary" showLabel size="lg" />
-      <Progress value={45} type="circular" variant="secondary" showLabel size="lg" />
-      <Progress value={80} type="circular" variant="tertiary" showLabel size="lg" />
+      <Progress
+        value={65}
+        type="circular"
+        variant="primary"
+        showLabel
+        size="lg"
+      />
+      <Progress
+        value={45}
+        type="circular"
+        variant="secondary"
+        showLabel
+        size="lg"
+      />
+      <Progress
+        value={80}
+        type="circular"
+        variant="tertiary"
+        showLabel
+        size="lg"
+      />
     </div>
   ),
 };

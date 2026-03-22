@@ -18,24 +18,27 @@ const textAreaVariants = cva(
       },
       sharp: {
         true: "rounded-none",
-        false: "rounded-lg",
+        false: "rounded-lg border-2",
       },
     },
     compoundVariants: [
       {
         variant: "primary",
         error: false,
-        className: "border-emerald-700 focus:ring-2 focus:ring-emerald-500",
+        className:
+          "border-emerald-700 hover:border-emerald-800 focus:ring-2 focus:ring-emerald-500",
       },
       {
         variant: "secondary",
         error: false,
-        className: "border-violet-700 focus:ring-2 focus:ring-violet-500",
+        className:
+          "border-violet-700  hover:border-violet-800 focus:ring-2 focus:ring-violet-500",
       },
       {
         variant: "tertiary",
         error: false,
-        className: "border-blue-700 focus:ring-2 focus:ring-blue-500",
+        className:
+          "border-blue-700  hover:border-blue-800 focus:ring-2 focus:ring-blue-500",
       },
     ],
     defaultVariants: {
@@ -46,7 +49,7 @@ const textAreaVariants = cva(
   },
 );
 
-const sharpWrapperVariants = cva("block p-px", {
+const sharpWrapperVariants = cva("block p-[2px]", {
   variants: {
     variant: {
       primary: "",

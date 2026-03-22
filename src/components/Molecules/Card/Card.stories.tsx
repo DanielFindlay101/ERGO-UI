@@ -41,7 +41,7 @@ export const Default: Story = {
   render: () => (
     <Card title="Notifications">
       <div className="flex flex-col gap-3">
-        <p>Here is my card content</p>
+        <p className="">Here is my card content</p>
       </div>
     </Card>
   ),
