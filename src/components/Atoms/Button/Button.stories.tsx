@@ -77,6 +77,14 @@ export const Danger: Story = {
     size: "md",
   },
 };
+export const NormalCustom: Story = {
+  args: {
+    children: "Button",
+    variant: "primary",
+    customColor: "#46b9a4",
+    size: "md",
+  },
+};
 
 export const Small: Story = {
   args: {
