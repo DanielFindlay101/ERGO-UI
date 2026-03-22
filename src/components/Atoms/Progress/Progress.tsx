@@ -99,7 +99,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
                 cy={center}
                 r={radius}
                 fill="none"
-                className="stroke-gray-300 dark:stroke-gray-700"
+                className="stroke-gray-200 dark:stroke-gray-700"
                 strokeWidth={strokeWidth}
               />
               <circle

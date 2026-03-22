@@ -2,28 +2,31 @@ import { HTMLAttributes, ReactNode, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
-const accordionVariants = cva("w-full bg-gray-500 text-white overflow-hidden", {
-  variants: {
-    variant: {
-      primary: "bg-emerald-500",
-      secondary: "bg-violet-700",
-      tertiary: "bg-blue-500",
+const accordionVariants = cva(
+  "w-full bg-gray-500 text-white shadow-md dark:shadow-none overflow-hidden",
+  {
+    variants: {
+      variant: {
+        primary: "bg-emerald-500",
+        secondary: "bg-violet-700",
+        tertiary: "bg-blue-500",
+      },
+      sharp: {
+        true: "rounded-none",
+        false: "rounded-lg border",
+      },
     },
-    sharp: {
-      true: "rounded-none",
-      false: "rounded-lg border",
+    compoundVariants: [
+      { sharp: false, variant: "primary", className: "border-emerald-500" },
+      { sharp: false, variant: "secondary", className: "border-violet-700" },
+      { sharp: false, variant: "tertiary", className: "border-blue-500" },
+    ],
+    defaultVariants: {
+      sharp: false,
+      variant: "primary",
     },
   },
-  compoundVariants: [
-    { sharp: false, variant: "primary", className: "border-emerald-500" },
-    { sharp: false, variant: "secondary", className: "border-violet-700" },
-    { sharp: false, variant: "tertiary", className: "border-blue-500" },
-  ],
-  defaultVariants: {
-    sharp: false,
-    variant: "primary",
-  },
-});
+);
 
 const summaryVariants = cva(
   "w-full flex list-none cursor-pointer select-none items-center justify-between px-4 py-3 font-semibold [&::-webkit-details-marker]:hidden",

@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const selectVariants = cva(
-  `w-full pl-4 pr-10 py-2 text-base bg-white dark:bg-gray-900 border text-gray-800 dark:text-gray-400 appearance-none
+  `w-full pl-4 pr-10 py-2 text-base bg-gray-200 dark:bg-gray-900 border text-gray-800 dark:text-gray-400 appearance-none
   transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
   {
     variants: {
@@ -13,7 +13,7 @@ const selectVariants = cva(
       },
       sharp: {
         true: "rounded-none",
-        false: "rounded-lg",
+        false: "rounded-lg border-2",
       },
     },
     defaultVariants: {
@@ -67,7 +67,10 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         >
           {children}
         </select>
-        <span aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+        >
           <ChevronDownIcon className="w-4 h-4" />
         </span>
       </div>

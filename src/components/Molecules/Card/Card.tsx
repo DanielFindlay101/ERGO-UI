@@ -1,7 +1,7 @@
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
-const cardVariants = cva("w-full overflow-hidden", {
+const cardVariants = cva("w-full overflow-hidden shadow-md dark:shadow-none", {
   variants: {
     variant: {
       primary: "bg-emerald-500",

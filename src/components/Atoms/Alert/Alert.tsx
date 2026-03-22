@@ -1,21 +1,24 @@
 import { ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
-const iconPanelVariants = cva("flex justify-center items-center p-3", {
-  variants: {
-    variant: {
-      complete: "bg-emerald-500",
-      info: "bg-blue-500",
-      secondary: "bg-violet-700",
-      danger: "bg-red-500",
+const iconPanelVariants = cva(
+  "flex justify-center items-center shadow-md dark:shadow-none p-3",
+  {
+    variants: {
+      variant: {
+        complete: "bg-emerald-500",
+        info: "bg-blue-500",
+        secondary: "bg-violet-700",
+        danger: "bg-red-500",
+      },
+      sharp: {
+        true: "",
+        false: "rounded-l-2xl",
+      },
     },
-    sharp: {
-      true: "",
-      false: "rounded-l-2xl",
-    },
+    defaultVariants: { variant: "complete", sharp: false },
   },
-  defaultVariants: { variant: "complete", sharp: false },
-});
+);
 
 const headerVariants = cva("px-4 py-2", {
   variants: {
