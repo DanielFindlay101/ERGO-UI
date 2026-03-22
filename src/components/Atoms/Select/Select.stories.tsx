@@ -9,6 +9,10 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {
+    variant: {
+      control: "select",
+      options: ["primary", "secondary", "tertiary"],
+    },
     sharp: { control: "boolean" },
     error: { control: "boolean" },
     disabled: { control: "boolean" },
@@ -35,8 +39,27 @@ const options = (
   </>
 );
 
-export const Default: Story = {
-  args: { label: "Fruit", children: options },
+export const Primary: Story = {
+  args: { label: "Fruit", children: options, variant: "primary" },
+};
+
+export const Secondary: Story = {
+  args: { label: "Fruit", children: options, variant: "secondary" },
+};
+
+export const Tertiary: Story = {
+  args: { label: "Fruit", children: options, variant: "tertiary" },
+};
+
+export const AllVariants: Story = {
+  args: { label: "", children: options },
+  render: () => (
+    <div className="flex flex-col gap-4 w-[320px]">
+      <Select label="Primary" variant="primary">{options}</Select>
+      <Select label="Secondary" variant="secondary">{options}</Select>
+      <Select label="Tertiary" variant="tertiary">{options}</Select>
+    </div>
+  ),
 };
 
 export const WithError: Story = {
@@ -51,18 +74,18 @@ export const Sharp: Story = {
   args: { label: "Fruit", children: options, sharp: true },
 };
 
+export const SharpSecondary: Story = {
+  args: { label: "Fruit", children: options, sharp: true, variant: "secondary" },
+};
+
+export const SharpTertiary: Story = {
+  args: { label: "Fruit", children: options, sharp: true, variant: "tertiary" },
+};
+
 export const SharpWithError: Story = {
   args: { label: "Fruit", children: options, sharp: true, error: true },
 };
 
 export const SharpDisabled: Story = {
   args: { label: "Fruit", children: options, sharp: true, disabled: true },
-};
-
-export const CustomColour: Story = {
-  args: { label: "Fruit", children: options, customColour: "#f97316" },
-};
-
-export const SharpCustomColour: Story = {
-  args: { label: "Fruit", children: options, sharp: true, customColour: "#f97316" },
 };

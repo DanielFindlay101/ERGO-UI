@@ -3,34 +3,83 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const selectVariants = cva(
-  `w-full pl-4 pr-10 py-2 text-base bg-gray-200 dark:bg-gray-900 border text-gray-800 dark:text-gray-400 appearance-none
-  transition-colors focus:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
+  `w-full pl-4 pr-10 py-2 text-base bg-gray-200 dark:bg-gray-900 border-2 text-gray-800 dark:text-gray-400 appearance-none
+  transition-colors hover:cursor-pointer focus:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
   {
     variants: {
+      variant: {
+        primary: "",
+        secondary: "",
+        tertiary: "",
+      },
       error: {
-        true: "border-red-500",
-        false: "border-emerald-700 focus:ring-2 focus:ring-emerald-500",
+        true: "border-red-500 hover:border-red-600 focus:ring-2 focus:ring-red-400",
+        false: "",
       },
       sharp: {
         true: "rounded-none",
-        false: "rounded-lg border-2",
+        false: "rounded-lg",
       },
     },
+    compoundVariants: [
+      {
+        variant: "primary",
+        error: false,
+        className:
+          "border-emerald-700 hover:border-emerald-600 focus:ring-2 focus:ring-emerald-500",
+      },
+      {
+        variant: "secondary",
+        error: false,
+        className:
+          "border-violet-700 hover:border-violet-800 focus:ring-2 focus:ring-violet-500",
+      },
+      {
+        variant: "tertiary",
+        error: false,
+        className:
+          "border-blue-700 hover:border-blue-600 focus:ring-2 focus:ring-blue-500",
+      },
+    ],
     defaultVariants: {
+      variant: "primary",
       error: false,
       sharp: false,
     },
   },
 );
 
-const sharpWrapperVariants = cva("inline-block p-px", {
+const sharpWrapperVariants = cva("inline-block p-[1.5px]", {
   variants: {
+    variant: {
+      primary: "",
+      secondary: "",
+      tertiary: "",
+    },
     error: {
-      true: "bg-red-500",
-      false: "bg-emerald-700 focus-within:bg-emerald-500",
+      true: "bg-red-500 focus:ring-2 focus:ring-red-400",
+      false: "",
     },
   },
+  compoundVariants: [
+    {
+      variant: "primary",
+      error: false,
+      className: "bg-emerald-700 focus-within:bg-emerald-500",
+    },
+    {
+      variant: "secondary",
+      error: false,
+      className: "bg-violet-700 focus-within:bg-violet-500",
+    },
+    {
+      variant: "tertiary",
+      error: false,
+      className: "bg-blue-700 focus-within:bg-blue-500",
+    },
+  ],
   defaultVariants: {
+    variant: "primary",
     error: false,
   },
 });
@@ -43,13 +92,12 @@ export interface SelectProps
     SelectHTMLAttributes<HTMLSelectElement>,
     VariantProps<typeof selectVariants> {
   label: string;
-  customColour?: string;
   children: ReactNode;
 }
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
-    { className, error, sharp, label, customColour, style, children, ...props },
+    { className, variant, error, sharp, label, style, children, ...props },
     ref,
   ) => {
     const inner = (
@@ -57,12 +105,8 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <select
           ref={ref}
           aria-invalid={error === true ? true : undefined}
-          className={selectVariants({ error, sharp, className })}
-          style={
-            sharp
-              ? { clipPath: SHARP_SELECT_CLIP_PATH, ...style }
-              : { borderColor: customColour, ...style }
-          }
+          className={selectVariants({ variant, error, sharp, className })}
+          style={sharp ? { clipPath: SHARP_SELECT_CLIP_PATH, ...style } : style}
           {...props}
         >
           {children}
@@ -81,15 +125,8 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <label className="flex flex-col gap-0">
           <span className="text-gray-800 dark:text-gray-300">{label}</span>
           <div
-            className={sharpWrapperVariants({ error })}
-            style={
-              customColour
-                ? {
-                    backgroundColor: customColour,
-                    clipPath: SHARP_SELECT_CLIP_PATH,
-                  }
-                : { clipPath: SHARP_SELECT_CLIP_PATH }
-            }
+            className={sharpWrapperVariants({ variant, error })}
+            style={{ clipPath: SHARP_SELECT_CLIP_PATH }}
           >
             {inner}
           </div>
