@@ -99,7 +99,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
                 cy={center}
                 r={radius}
                 fill="none"
-                stroke="#1f2937"
+                className="stroke-gray-300 dark:stroke-gray-700"
                 strokeWidth={strokeWidth}
               />
               <circle
@@ -148,7 +148,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
             aria-valuenow={clampedValue}
             aria-valuemin={0}
             aria-valuemax={100}
-            className={`flex-1 overflow-hidden bg-gray-700 ${heightClass} ${roundedClass}`}
+            className={`flex-1 overflow-hidden bg-gray-200 dark:bg-gray-700 ${heightClass} ${roundedClass}`}
           >
             <div
               className={`h-full ${roundedClass} transition-all duration-500`}

@@ -26,8 +26,8 @@ export type { ProgressProps } from "./components/Atoms/Progress/Progress";
 export { default as Select } from "./components/Atoms/Select/Select";
 export type { SelectProps } from "./components/Atoms/Select/Select";
 
-export { default as Slider } from "./components/Atoms/Slider/Slider";
-export type { SliderProps } from "./components/Atoms/Slider/Slider";
+// export { default as Slider } from "./components/Atoms/Slider/Slider";
+// export type { SliderProps } from "./components/Atoms/Slider/Slider";
 
 export { default as TextArea } from "./components/Atoms/TextArea/TextArea";
 export type { TextAreaProps } from "./components/Atoms/TextArea/TextArea";

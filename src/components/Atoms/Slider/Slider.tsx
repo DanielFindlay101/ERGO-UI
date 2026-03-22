@@ -8,8 +8,8 @@ const VARIANT_HEX: Record<string, string> = {
 };
 
 const sliderVariants = cva(
-  `w-full h-2 appearance-none cursor-pointer
-   bg-gray-700
+  `w-full h-2 appearance-none cursor-pointer 
+   bg-gray-200 dark:bg-gray-700
    [&::-webkit-slider-thumb]:appearance-none
    [&::-webkit-slider-thumb]:h-4
    [&::-webkit-slider-thumb]:w-4
@@ -34,7 +34,8 @@ const sliderVariants = cva(
       },
       sharp: {
         true: "rounded-none [&::-webkit-slider-thumb]:rounded-none [&::-moz-range-thumb]:rounded-none",
-        false: "rounded-full [&::-webkit-slider-thumb]:rounded-full [&::-moz-range-thumb]:rounded-full",
+        false:
+          "rounded-full [&::-webkit-slider-thumb]:rounded-full [&::-moz-range-thumb]:rounded-full",
       },
     },
     defaultVariants: {
@@ -45,7 +46,8 @@ const sliderVariants = cva(
 );
 
 export interface SliderProps
-  extends InputHTMLAttributes<HTMLInputElement>,
+  extends
+    InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof sliderVariants> {
   label: string;
   customColour?: string;
@@ -53,7 +55,15 @@ export interface SliderProps
 
 const Slider = forwardRef<HTMLInputElement, SliderProps>(
   (
-    { className, variant = "primary", sharp, label, customColour, style, ...props },
+    {
+      className,
+      variant = "primary",
+      sharp,
+      label,
+      customColour,
+      style,
+      ...props
+    },
     ref,
   ) => {
     const sliderColor =
@@ -61,7 +71,9 @@ const Slider = forwardRef<HTMLInputElement, SliderProps>(
 
     return (
       <label className="flex flex-col gap-2">
-        <span className="text-sm text-gray-800 dark:text-gray-300">{label}</span>
+        <span className="text-sm text-gray-800 dark:text-gray-300">
+          {label}
+        </span>
         <input
           {...props}
           type="range"
