@@ -30,8 +30,8 @@
     "build-storybook": "storybook build"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

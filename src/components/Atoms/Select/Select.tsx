@@ -49,7 +49,7 @@ const selectVariants = cva(
   },
 );
 
-const sharpWrapperVariants = cva("inline-block p-[1.5px]", {
+const sharpWrapperVariants = cva("inline-block p-[2px]", {
   variants: {
     variant: {
       primary: "",
