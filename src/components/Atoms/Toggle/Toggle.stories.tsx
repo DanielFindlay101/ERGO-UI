@@ -32,6 +32,6 @@ export const Tertiary: Story = {
 export const Custom: Story = {
   args: {
     variant: "primary",
-    className: "bg-blue-500 has-[:checked]:bg-blue-500 outline-blue-500",
+    className: "has-[:checked]:bg-cyan-500 outline-cyan-500",
   },
 };

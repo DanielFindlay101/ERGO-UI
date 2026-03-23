@@ -78,6 +78,14 @@ export const SharpSecondary: Story = {
   },
 };
 
+export const SharpPrimary: Story = {
+  args: {
+    label: "Message",
+    placeholder: "Enter your message...",
+    variant: "primary",
+    sharp: true,
+  },
+};
 export const SharpTertiary: Story = {
   args: {
     label: "Message",

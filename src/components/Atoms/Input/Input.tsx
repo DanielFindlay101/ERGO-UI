@@ -20,7 +20,7 @@ const inputVariants = cva(
         false: "",
       },
       sharp: {
-        true: "rounded-none",
+        true: "rounded-none !border-0",
         false: "rounded-lg",
       },
       iconLeft: {
@@ -40,7 +40,7 @@ const inputVariants = cva(
 const SHARP_INPUT_CLIP_PATH =
   "polygon(0% 0%, 100% 0%, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0% 100%)";
 
-const sharpWrapperVariants = cva("inline-block p-[1.5px]", {
+const sharpWrapperVariants = cva("inline-block p-[2px]", {
   variants: {
     variant: {
       primary: "bg-emerald-700 focus-within:bg-emerald-500",

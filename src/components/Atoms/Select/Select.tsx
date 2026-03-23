@@ -17,7 +17,7 @@ const selectVariants = cva(
         false: "",
       },
       sharp: {
-        true: "rounded-none",
+        true: "rounded-none !border-0",
         false: "rounded-lg",
       },
     },
