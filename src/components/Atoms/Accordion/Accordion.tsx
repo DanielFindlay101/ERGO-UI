@@ -13,7 +13,7 @@ const accordionVariants = cva(
       },
       sharp: {
         true: "rounded-none",
-        false: "rounded-lg border",
+        false: "rounded-lg border-2",
       },
     },
     compoundVariants: [
@@ -60,7 +60,7 @@ const contentVariants = cva(
   },
 );
 
-const wrapperVariants = cva("block p-px", {
+const wrapperVariants = cva("block p-[2px]", {
   variants: {
     variant: {
       primary: "bg-emerald-500",
@@ -82,51 +82,26 @@ export interface AccordionProps
     VariantProps<typeof accordionVariants> {
   title: ReactNode;
   defaultOpen?: boolean;
-  customColour?: string;
 }
 
 const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
-  (
-    {
-      className,
-      sharp,
-      variant,
-      title,
-      children,
-      defaultOpen,
-      customColour,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ sharp, variant, title, children, defaultOpen, ...props }, ref) => {
     const details = (
       <details
         ref={ref}
         open={defaultOpen}
-        className={`group ${accordionVariants({ sharp, variant, className })}`}
-        style={
-          sharp
-            ? { clipPath: SHARP_ACCORDION_CLIP_PATH }
-            : { borderColor: customColour }
-        }
+        className={`group ${accordionVariants({ sharp, variant })}`}
+        style={sharp ? { clipPath: SHARP_ACCORDION_CLIP_PATH } : undefined}
         {...props}
       >
-        <summary
-          className={summaryVariants({ variant })}
-          style={{ backgroundColor: customColour }}
-        >
+        <summary className={summaryVariants({ variant })}>
           <span>{title}</span>
           <ChevronDownIcon
             aria-hidden="true"
             className="h-5 w-5 flex-shrink-0 transition-transform duration-200 group-open:rotate-180"
           />
         </summary>
-        <div
-          className={contentVariants({ variant })}
-          style={{ borderLeftColor: customColour }}
-        >
-          {children}
-        </div>
+        <div className={contentVariants({ variant })}>{children}</div>
       </details>
     );
 
@@ -134,10 +109,7 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
       return (
         <div
           className={wrapperVariants({ variant })}
-          style={{
-            backgroundColor: customColour,
-            clipPath: SHARP_ACCORDION_CLIP_PATH,
-          }}
+          style={{ clipPath: SHARP_ACCORDION_CLIP_PATH }}
         >
           {details}
         </div>

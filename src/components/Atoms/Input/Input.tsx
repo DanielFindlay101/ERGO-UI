@@ -8,9 +8,12 @@ const inputVariants = cva(
   {
     variants: {
       variant: {
-        primary: "",
-        secondary: "",
-        tertiary: "",
+        primary:
+          "border-emerald-700 hover:border-emerald-600 focus:ring-2 focus:ring-emerald-500",
+        secondary:
+          "border-violet-700 hover:border-violet-800 focus:ring-2 focus:ring-violet-500",
+        tertiary:
+          "border-blue-700 hover:border-blue-600 focus:ring-2 focus:ring-blue-500",
       },
       error: {
         true: "border-red-500 hover:border-red-600 focus:ring-2 focus:ring-red-400",
@@ -25,26 +28,6 @@ const inputVariants = cva(
         false: "pr-10 pl-4",
       },
     },
-    compoundVariants: [
-      {
-        variant: "primary",
-        error: false,
-        className:
-          "border-emerald-700 hover:border-emerald-600 focus:ring-2 focus:ring-emerald-500",
-      },
-      {
-        variant: "secondary",
-        error: false,
-        className:
-          "border-violet-700 hover:border-violet-800 focus:ring-2 focus:ring-violet-500",
-      },
-      {
-        variant: "tertiary",
-        error: false,
-        className:
-          "border-blue-700 hover:border-blue-600 focus:ring-2 focus:ring-blue-500",
-      },
-    ],
     defaultVariants: {
       variant: "primary",
       error: false,
@@ -60,32 +43,15 @@ const SHARP_INPUT_CLIP_PATH =
 const sharpWrapperVariants = cva("inline-block p-[1.5px]", {
   variants: {
     variant: {
-      primary: "",
-      secondary: "",
-      tertiary: "",
+      primary: "bg-emerald-700 focus-within:bg-emerald-500",
+      secondary: "bg-violet-700 focus-within:bg-violet-500",
+      tertiary: "bg-blue-700 focus-within:bg-blue-500",
     },
     error: {
       true: "bg-red-500 focus:ring-2 focus:ring-red-400",
       false: "",
     },
   },
-  compoundVariants: [
-    {
-      variant: "primary",
-      error: false,
-      className: "bg-emerald-700 focus-within:bg-emerald-500",
-    },
-    {
-      variant: "secondary",
-      error: false,
-      className: "bg-violet-700 focus-within:bg-violet-500",
-    },
-    {
-      variant: "tertiary",
-      error: false,
-      className: "bg-blue-700 focus-within:bg-blue-500",
-    },
-  ],
   defaultVariants: {
     variant: "primary",
     error: false,
@@ -103,7 +69,6 @@ export interface InputProps
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      className,
       variant,
       error,
       sharp,
@@ -128,7 +93,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           error,
           sharp,
           iconLeft: hasIcon ? iconLeft : undefined,
-          className,
         })}
         style={sharp ? { clipPath: SHARP_INPUT_CLIP_PATH, ...style } : style}
         {...props}

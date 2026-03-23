@@ -42,13 +42,11 @@ export interface ProgressProps
   type?: "bar" | "circular";
   showLabel?: boolean;
   label?: string;
-  customColour?: string;
 }
 
 const Progress = forwardRef<HTMLDivElement, ProgressProps>(
   (
     {
-      className,
       variant = "primary",
       size = "md",
       sharp = false,
@@ -56,15 +54,13 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
       type = "bar",
       showLabel = false,
       label,
-      customColour,
       style,
       ...props
     },
     ref,
   ) => {
     const clampedValue = Math.max(0, Math.min(100, value));
-    const color =
-      customColour ?? VARIANT_HEX[variant ?? "primary"] ?? VARIANT_HEX.primary;
+    const color = VARIANT_HEX[variant ?? "primary"] ?? VARIANT_HEX.primary;
 
     if (type === "circular") {
       const diameter = CIRCULAR_DIAMETER[size ?? "md"];
@@ -85,7 +81,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
             aria-valuenow={clampedValue}
             aria-valuemin={0}
             aria-valuemax={100}
-            className={`relative inline-flex items-center justify-center${className ? ` ${className}` : ""}`}
+            className="relative inline-flex items-center justify-center"
             style={{ width: diameter, height: diameter, ...style }}
             {...props}
           >
@@ -139,7 +135,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
         </span>
         <div
           ref={ref}
-          className={`flex items-center gap-2${className ? ` ${className}` : ""}`}
+          className="flex items-center gap-2"
           style={style}
           {...props}
         >

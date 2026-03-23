@@ -56,7 +56,6 @@ export interface AlertProps extends VariantProps<typeof iconPanelVariants> {
   alertIcon?: ReactNode;
   headingText: string;
   bodyText: string;
-  customColour?: string;
 }
 
 export default function Alert({
@@ -65,26 +64,18 @@ export default function Alert({
   alertIcon,
   headingText,
   bodyText,
-  customColour,
 }: AlertProps) {
-  const colourStyle = customColour
-    ? { backgroundColor: customColour }
-    : undefined;
-
   return (
     <div
       role="alert"
-      className="flex max-w-[600px]"
+      className={"flex max-w-[600px]"}
       style={sharp ? { clipPath: SHARP_ALERT_CLIP_PATH } : undefined}
     >
-      <div
-        className={iconPanelVariants({ variant, sharp })}
-        style={colourStyle}
-      >
+      <div className={iconPanelVariants({ variant, sharp })}>
         <span aria-hidden="true">{alertIcon}</span>
       </div>
       <div className={rightPanelVariants({ sharp })}>
-        <div className={headerVariants({ variant, sharp })} style={colourStyle}>
+        <div className={headerVariants({ variant, sharp })}>
           <span className="text-white text-lg font-semibold">
             {headingText}
           </span>

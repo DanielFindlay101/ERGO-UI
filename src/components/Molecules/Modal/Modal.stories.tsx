@@ -49,7 +49,6 @@ const meta = {
       title={args.title ?? "Modal Title"}
       variant={args.variant}
       sharp={args.sharp}
-      customColour={args.customColour}
       headerIcon={args.headerIcon}
     >
       {defaultChildren}
@@ -89,14 +88,6 @@ export const SharpSecondary: Story = {
 
 export const SharpTertiary: Story = {
   args: { title: "Confirm Action", variant: "tertiary", sharp: true },
-};
-
-export const CustomColour: Story = {
-  args: { title: "Custom Modal", customColour: "#f97316" },
-};
-
-export const SharpCustomColour: Story = {
-  args: { title: "Custom Modal", customColour: "#f97316", sharp: true },
 };
 
 export const WithLongContent: Story = {

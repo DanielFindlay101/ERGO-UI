@@ -33,6 +33,7 @@ export const Complete: Story = {
     variant: "complete",
     headingText: "Success",
     bodyText: BODY,
+    className: "bg-orange-500",
     alertIcon: <CheckCircleIcon className="w-8 h-8 text-white" />,
   },
 };
@@ -101,16 +102,6 @@ export const SharpDanger: Story = {
     headingText: "Error",
     bodyText: BODY,
     alertIcon: <XCircleIcon className="w-8 h-8 text-white" />,
-  },
-};
-
-export const CustomColourOrange: Story = {
-  args: {
-    variant: "complete",
-    customColour: "#f97316",
-    headingText: "Custom Colour",
-    bodyText: BODY,
-    alertIcon: <InformationCircleIcon className="w-8 h-8 text-white" />,
   },
 };
 

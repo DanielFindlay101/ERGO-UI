@@ -96,16 +96,13 @@ export interface SelectProps
 }
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  (
-    { className, variant, error, sharp, label, style, children, ...props },
-    ref,
-  ) => {
+  ({ variant, error, sharp, label, style, children, ...props }, ref) => {
     const inner = (
       <div className="relative">
         <select
           ref={ref}
           aria-invalid={error === true ? true : undefined}
-          className={selectVariants({ variant, error, sharp, className })}
+          className={selectVariants({ variant, error, sharp })}
           style={sharp ? { clipPath: SHARP_SELECT_CLIP_PATH, ...style } : style}
           {...props}
         >

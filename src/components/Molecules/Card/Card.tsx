@@ -74,39 +74,19 @@ export interface CardProps
     Omit<HTMLAttributes<HTMLDivElement>, "title">,
     VariantProps<typeof cardVariants> {
   title: ReactNode;
-  customColour?: string;
   headerIcon?: ReactNode;
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  (
-    {
-      className,
-      sharp,
-      variant,
-      title,
-      children,
-      customColour,
-      headerIcon,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ sharp, variant, title, children, headerIcon, ...props }, ref) => {
     const card = (
       <div
         ref={ref}
-        className={cardVariants({ sharp, variant, className })}
-        style={
-          sharp
-            ? { clipPath: SHARP_CARD_CLIP_PATH }
-            : { borderColor: customColour }
-        }
+        className={cardVariants({ sharp, variant })}
+        style={sharp ? { clipPath: SHARP_CARD_CLIP_PATH } : undefined}
         {...props}
       >
-        <div
-          className={headerVariants({ variant })}
-          style={{ backgroundColor: customColour }}
-        >
+        <div className={headerVariants({ variant })}>
           <h4 className="text-lg">{title}</h4>
           {headerIcon && (
             <span aria-hidden="true" className="text-white">
@@ -114,12 +94,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
             </span>
           )}
         </div>
-        <div
-          className={bodyVariants({ variant })}
-          style={{ borderLeftColor: customColour }}
-        >
-          {children}
-        </div>
+        <div className={bodyVariants({ variant })}>{children}</div>
       </div>
     );
 
@@ -127,10 +102,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       return (
         <div
           className={wrapperVariants({ variant })}
-          style={{
-            backgroundColor: customColour,
-            clipPath: SHARP_CARD_CLIP_PATH,
-          }}
+          style={{ clipPath: SHARP_CARD_CLIP_PATH }}
         >
           {card}
         </div>

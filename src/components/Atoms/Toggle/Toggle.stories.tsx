@@ -29,9 +29,9 @@ export const Tertiary: Story = {
     variant: "tertiary",
   },
 };
-
-export const CustomColour: Story = {
+export const Custom: Story = {
   args: {
-    customColour: "#f97316",
+    variant: "primary",
+    className: "bg-blue-500 has-[:checked]:bg-blue-500 outline-blue-500",
   },
 };

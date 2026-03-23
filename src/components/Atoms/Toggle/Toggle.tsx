@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-
+import { twMerge } from "tailwind-merge";
 const toggleVariants = cva(
   "group relative inline-flex w-11 shrink-0 bg-gray-500 p-0.5 shadow-inner outline-offset-2 transition-colors duration-200 ease-in-out has-[:focus-visible]:outline-2",
   {
@@ -42,16 +42,12 @@ export interface ToggleProps
     InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof toggleVariants> {
   sharp?: boolean;
-  customColour?: string;
 }
 
 const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
-  ({ variant, sharp, customColour, "aria-label": ariaLabel, ...props }, ref) => {
+  ({ variant, sharp, "aria-label": ariaLabel, className, ...props }, ref) => {
     return (
-      <div
-        className={`${toggleVariants({ variant, sharp })}${customColour ? " has-[:checked]:[background-color:var(--toggle-color)]" : ""}`}
-        style={customColour ? ({ "--toggle-color": customColour } as React.CSSProperties) : undefined}
-      >
+      <div className={twMerge(toggleVariants({ variant, sharp }), className)}>
         <span aria-hidden="true" className={slideVariants({ sharp })} />
         <input
           ref={ref}

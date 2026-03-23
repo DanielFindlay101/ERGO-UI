@@ -1,5 +1,6 @@
 import { InputHTMLAttributes, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 const VARIANT_HEX: Record<string, string> = {
   primary: "#10b981",
@@ -50,7 +51,6 @@ export interface SliderProps
     InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof sliderVariants> {
   label: string;
-  customColour?: string;
 }
 
 const Slider = forwardRef<HTMLInputElement, SliderProps>(
@@ -60,14 +60,12 @@ const Slider = forwardRef<HTMLInputElement, SliderProps>(
       variant = "primary",
       sharp,
       label,
-      customColour,
       style,
       ...props
     },
     ref,
   ) => {
-    const sliderColor =
-      customColour ?? VARIANT_HEX[variant ?? "primary"] ?? VARIANT_HEX.primary;
+    const sliderColor = VARIANT_HEX[variant ?? "primary"] ?? VARIANT_HEX.primary;
 
     return (
       <label className="flex flex-col gap-2">
@@ -78,7 +76,7 @@ const Slider = forwardRef<HTMLInputElement, SliderProps>(
           {...props}
           type="range"
           ref={ref}
-          className={sliderVariants({ variant, sharp, className })}
+          className={twMerge(sliderVariants({ variant, sharp }), className)}
           style={
             {
               "--slider-color": sliderColor,

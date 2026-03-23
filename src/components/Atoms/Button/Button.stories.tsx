@@ -32,6 +32,9 @@ const meta = {
     outline: {
       control: "boolean",
     },
+    loading: {
+      control: "boolean",
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -77,11 +80,12 @@ export const Danger: Story = {
     size: "md",
   },
 };
-export const NormalCustom: Story = {
+export const CustomClassName: Story = {
   args: {
     children: "Button",
     variant: "primary",
-    customColor: "#46b9a4",
+    className: "bg-blue-600 text-black hover:bg-blue-800 focus:ring-blue-500",
+    icon: <PlusIcon className="w-5 h-5" />,
     size: "md",
   },
 };
@@ -230,15 +234,17 @@ export const SharpOutlineDanger: Story = {
   args: { children: "Button", variant: "danger", sharp: true, outline: true },
 };
 
-export const CustomColor: Story = {
-  args: {
-    children: "Custom Button",
-    customColor: "#e60076",
-    size: "md",
-    sharp: true,
-  },
+export const AllVariants: Story = {
+  args: { children: "" },
+  render: () => (
+    <div className="flex gap-3 items-center">
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="tertiary">Tertiary</Button>
+      <Button variant="danger">Danger</Button>
+    </div>
+  ),
 };
-
 export const AllOutlineVariants: Story = {
   args: { children: "" },
   render: () => (

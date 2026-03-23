@@ -95,13 +95,13 @@ export interface TextAreaProps
 }
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ className, variant, error, sharp, label, style, ...props }, ref) => {
+  ({ variant, error, sharp, label, style, ...props }, ref) => {
     const textarea = (
       <textarea
         ref={ref}
         rows={4}
         aria-invalid={error === true ? true : undefined}
-        className={textAreaVariants({ variant, error, sharp, className })}
+        className={textAreaVariants({ variant, error, sharp })}
         style={sharp ? { clipPath: SHARP_TEXTAREA_CLIP_PATH, ...style } : style}
         {...props}
       />

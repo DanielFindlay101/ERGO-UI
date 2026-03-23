@@ -146,14 +146,6 @@ export const WithToggleSharp: Story = {
   ),
 };
 
-export const CustomColour: Story = {
-  args: {
-    title: "Custom Colour",
-    children: sampleContent,
-    customColour: "#f97316",
-  },
-};
-
 export const AllVariants: Story = {
   args: { title: "" },
   render: () => (

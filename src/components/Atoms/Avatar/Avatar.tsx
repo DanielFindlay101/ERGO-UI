@@ -1,5 +1,6 @@
 import { ImgHTMLAttributes, forwardRef } from "react";
 import { cva } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 const avatarVariants = cva("relative inline-block shrink-0", {
   variants: {
@@ -51,16 +52,15 @@ export interface AvatarProps extends Omit<
   sharp?: boolean;
   status?: AvatarStatus;
   size?: number;
-  customColour?: string;
 }
 
 const Avatar = forwardRef<HTMLImageElement, AvatarProps>(
-  ({ sharp, status, size = 48, src, alt, className, customColour, ...props }, ref) => {
+  ({ sharp, status, size = 48, src, alt, className, ...props }, ref) => {
     const indicatorSize = Math.max(8, Math.round(size * 0.22));
 
     return (
       <div
-        className={avatarVariants({ sharp, className })}
+        className={twMerge(avatarVariants({ sharp }), className)}
         style={{ width: size, height: size }}
       >
         <img
@@ -76,7 +76,7 @@ const Avatar = forwardRef<HTMLImageElement, AvatarProps>(
             role="img"
             aria-label={status}
             className={indicatorVariants({ status, sharp })}
-            style={{ width: indicatorSize, height: indicatorSize, ...(customColour ? { backgroundColor: customColour } : {}) }}
+            style={{ width: indicatorSize, height: indicatorSize }}
           />
         )}
       </div>

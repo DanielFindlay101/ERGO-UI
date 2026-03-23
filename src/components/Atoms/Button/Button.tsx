@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(
   `font-semibold transition-colors focus:outline-none focus-visible:outline-none
@@ -7,11 +8,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "",
-        secondary: "",
-        tertiary: "",
+        primary: "focus:ring-emerald-400",
+        secondary: "focus:ring-violet-500",
+        tertiary: "focus:ring-blue-500",
         ghost: "",
-        danger: "",
+        danger: "focus:ring-red-400",
       },
       size: {
         sm: "px-3 py-1.5 text-sm",
@@ -41,38 +42,36 @@ const buttonVariants = cva(
         outline: true,
         variant: "primary",
         className:
-          "text-emerald-500 hover:text-emerald-600 border-emerald-500 hover:border-emerald-600 focus:ring-emerald-400",
+          "text-emerald-500 hover:text-emerald-600 border-emerald-500 hover:border-emerald-600",
       },
       {
         outline: true,
         variant: "secondary",
         className:
-          "text-violet-700 hover:text-violet-800 border-violet-700 hover:border-violet-800 focus:ring-violet-500",
+          "text-violet-700 hover:text-violet-800 border-violet-700 hover:border-violet-800",
       },
       {
         outline: true,
         variant: "tertiary",
         className:
-          "text-blue-500 hover:text-blue-600 border-blue-500 hover:border-blue-600 focus:ring-blue-500",
+          "text-blue-500 hover:text-blue-600 border-blue-500 hover:border-blue-600",
       },
       {
         outline: true,
         variant: "danger",
         className:
-          "text-red-500 hover:text-red-600 border-red-500 hover:border-red-600 focus:ring-red-400",
+          "text-red-500 hover:text-red-600 border-red-500 hover:border-red-600",
       },
       // Filled variants
       {
         outline: false,
         variant: "primary",
-        className:
-          "bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-emerald-400",
+        className: "bg-emerald-500 text-white hover:bg-emerald-600",
       },
       {
         outline: false,
         variant: "secondary",
-        className:
-          "bg-violet-700 text-white hover:bg-violet-800 focus:ring-violet-500",
+        className: "bg-violet-700 text-white hover:bg-violet-800",
       },
       {
         outline: false,
@@ -83,13 +82,12 @@ const buttonVariants = cva(
       {
         outline: false,
         variant: "tertiary",
-        className:
-          "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-400",
+        className: "bg-blue-500 text-white hover:bg-blue-600",
       },
       {
         outline: false,
         variant: "danger",
-        className: "bg-red-500 text-white hover:bg-red-600 focus:ring-red-400",
+        className: "bg-red-500 text-white hover:bg-red-600",
       },
     ],
     defaultVariants: {
@@ -125,7 +123,7 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   icon?: ReactNode;
   iconPosition?: "left" | "right";
-  customColor?: string;
+  loading?: boolean;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -140,30 +138,22 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = "left",
       children,
       style,
-      customColor,
+      loading,
       ...props
     },
     ref,
   ) => {
-    const filledStyle = customColor
-      ? { backgroundColor: customColor }
-      : undefined;
-    const outlineStyle = customColor
-      ? { borderColor: customColor, color: customColor }
-      : undefined;
     const button = (
       <button
+        disabled={loading}
+        aria-busy={loading}
         ref={ref}
-        className={buttonVariants({ variant, size, sharp, outline, className })}
-        style={
-          sharp
-            ? {
-                clipPath: SHARP_BUTTON_CLIP_PATH,
-                ...(!outline ? filledStyle : outlineStyle),
-                ...style,
-              }
-            : { ...(!outline ? filledStyle : outlineStyle), ...style }
-        }
+        className={twMerge(
+          buttonVariants({ variant, size, sharp, outline }),
+          loading && "opacity-50 cursor-not-allowed",
+          className,
+        )}
+        style={sharp ? { clipPath: SHARP_BUTTON_CLIP_PATH, ...style } : style}
         {...props}
       >
         {icon && iconPosition === "left" && (
@@ -184,10 +174,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       return (
         <div
           className={sharpOutlineWrapperVariants({ variant })}
-          style={{
-            clipPath: SHARP_BUTTON_CLIP_PATH,
-            ...(customColor ? { backgroundColor: customColor } : {}),
-          }}
+          style={{ clipPath: SHARP_BUTTON_CLIP_PATH }}
         >
           {button}
         </div>

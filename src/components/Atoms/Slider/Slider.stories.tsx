@@ -47,14 +47,6 @@ export const SharpTertiary: Story = {
   args: { label: "Volume", defaultValue: 60, variant: "tertiary", sharp: true },
 };
 
-export const CustomColour: Story = {
-  args: { label: "Volume", defaultValue: 60, customColour: "#f97316" },
-};
-
-export const SharpCustomColour: Story = {
-  args: { label: "Volume", defaultValue: 60, customColour: "#f97316", sharp: true },
-};
-
 export const Disabled: Story = {
   args: { label: "Volume", defaultValue: 60, disabled: true },
 };

@@ -40,6 +40,9 @@ export const Secondary: Story = {
 export const Tertiary: Story = {
   args: { value: 65, variant: "tertiary" },
 };
+export const Custom: Story = {
+  args: { value: 65, variant: "tertiary" },
+};
 
 export const WithLabel: Story = {
   args: { value: 65, showLabel: true },
@@ -59,10 +62,6 @@ export const SharpTertiary: Story = {
 
 export const SharpWithLabel: Story = {
   args: { value: 65, sharp: true, showLabel: true },
-};
-
-export const CustomColour: Story = {
-  args: { value: 65, customColour: "#f97316", showLabel: true },
 };
 
 export const SmallSize: Story = {
@@ -128,15 +127,6 @@ export const CircularTertiary: Story = {
 
 export const CircularSharp: Story = {
   args: { value: 65, type: "circular", sharp: true, showLabel: true },
-};
-
-export const CircularCustomColour: Story = {
-  args: {
-    value: 65,
-    type: "circular",
-    customColour: "#f97316",
-    showLabel: true,
-  },
 };
 
 export const AllCircularVariants: Story = {

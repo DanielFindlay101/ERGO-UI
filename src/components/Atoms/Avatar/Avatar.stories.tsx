@@ -67,10 +67,6 @@ export const Small: Story = {
   args: { src, size: 32, status: "online" },
 };
 
-export const CustomColour: Story = {
-  args: { src, status: "online", customColour: "#f97316" },
-};
-
 export const AllStatuses: Story = {
   args: { src },
   render: () => (

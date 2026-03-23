@@ -49,7 +49,6 @@ export interface ModalProps
   onClose: () => void;
   title: string;
   children: ReactNode;
-  customColour?: string;
   headerIcon?: ReactNode;
 }
 
@@ -60,7 +59,6 @@ const Modal = ({
   children,
   variant,
   sharp,
-  customColour,
   headerIcon,
 }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -89,10 +87,6 @@ const Modal = ({
     }
   };
 
-  const colourStyle = customColour
-    ? { backgroundColor: customColour }
-    : undefined;
-
   return (
     <dialog
       ref={dialogRef}
@@ -106,7 +100,7 @@ const Modal = ({
       style={sharp ? { clipPath: SHARP_MODAL_CLIP_PATH } : undefined}
     >
       <div onClick={(e) => e.stopPropagation()} className="flex flex-col">
-        <header className={headerVariants({ variant })} style={colourStyle}>
+        <header className={headerVariants({ variant })}>
           <div className="flex gap-2 items-center">
             {headerIcon && (
               <span aria-hidden="true" className="text-white">

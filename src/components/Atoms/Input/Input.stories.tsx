@@ -93,6 +93,26 @@ export const AllVariants: Story = {
     </div>
   ),
 };
+export const AllSharpVariants: Story = {
+  args: { label: "", placeholder: "" },
+  render: () => (
+    <div className="flex flex-col gap-4 w-[320px]">
+      <Input label="Primary" placeholder="Enter text" variant="primary" sharp />
+      <Input
+        label="Secondary"
+        placeholder="Enter text"
+        variant="secondary"
+        sharp
+      />
+      <Input
+        label="Tertiary"
+        placeholder="Enter text"
+        variant="tertiary"
+        sharp
+      />
+    </div>
+  ),
+};
 
 export const WithError: Story = {
   args: {
@@ -182,7 +202,6 @@ export const SharpWithIcon: Story = {
     icon: <MagnifyingGlassIcon className="w-5 h-5" />,
   },
 };
-
 
 export const SharpWithIconLeft: Story = {
   args: {
