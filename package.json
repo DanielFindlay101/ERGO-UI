@@ -12,6 +12,11 @@
       "require": "./dist/ergo-ui.cjs",
       "types": "./dist/types/index.d.ts"
     },
+    "./sharp": {
+      "import": "./dist/ergo-ui-sharp.js",
+      "require": "./dist/ergo-ui-sharp.cjs",
+      "types": "./dist/types/sharp/index.d.ts"
+    },
     "./style.css": "./dist/style.css"
   },
   "files": [

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Avatar from "./Avatar";
+import Avatar from "./AvatarSharp";
 
 const meta = {
-  title: "Components/Atoms/Avatar",
+  title: "Components/Atoms/Avatar/Sharp",
   component: Avatar,
   parameters: {
     layout: "centered",

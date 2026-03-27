@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Slider from "./Slider";
+import Slider from "./SliderSharp";
 
 const meta = {
-  title: "Components/Atoms/Slider",
+  title: "Components/Atoms/Slider/Sharp",
   component: Slider,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
@@ -36,10 +36,6 @@ export const Tertiary: Story = {
 
 export const Disabled: Story = {
   args: { label: "Volume", defaultValue: 60, disabled: true },
-};
-
-export const WithSteps: Story = {
-  args: { label: "Brightness (0–100)", defaultValue: 50, min: 0, max: 100, step: 10 },
 };
 
 export const AllVariants: Story = {

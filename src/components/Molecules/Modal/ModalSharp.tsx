@@ -25,8 +25,11 @@ const dialogVariants = cva(
    w-full max-w-lg
    shadow-2xl
    backdrop:bg-black/60
-   rounded-xl overflow-hidden`,
+   rounded-none`,
 );
+
+const SHARP_MODAL_CLIP_PATH =
+  "polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px)";
 
 export interface ModalProps extends VariantProps<typeof headerVariants> {
   open: boolean;
@@ -80,6 +83,7 @@ const Modal = ({
         onClose();
       }}
       className={dialogVariants()}
+      style={{ clipPath: SHARP_MODAL_CLIP_PATH }}
     >
       <div onClick={(e) => e.stopPropagation()} className="flex flex-col">
         <header className={headerVariants({ variant })}>
@@ -101,7 +105,7 @@ const Modal = ({
             <XMarkIcon className="w-5 h-5" />
           </button>
         </header>
-        <div className="px-6 py-5 ">{children}</div>
+        <div className="px-6 py-5">{children}</div>
       </div>
     </dialog>
   );

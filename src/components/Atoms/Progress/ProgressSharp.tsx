@@ -101,7 +101,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
                 strokeWidth={strokeWidth}
                 strokeDasharray={circumference}
                 strokeDashoffset={dashOffset}
-                strokeLinecap="round"
+                strokeLinecap="butt"
                 style={{ transition: "stroke-dashoffset 0.5s ease" }}
               />
             </svg>
@@ -137,10 +137,10 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
             aria-valuenow={clampedValue}
             aria-valuemin={0}
             aria-valuemax={100}
-            className={`flex-1 overflow-hidden bg-gray-200 dark:bg-gray-700 ${heightClass} rounded-full`}
+            className={`flex-1 overflow-hidden bg-gray-200 dark:bg-gray-700 ${heightClass} rounded-none`}
           >
             <div
-              className="h-full rounded-full transition-all duration-500"
+              className="h-full rounded-none transition-all duration-500"
               style={{ width: `${clampedValue}%`, backgroundColor: color }}
             />
           </div>

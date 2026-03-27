@@ -1,14 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   MagnifyingGlassIcon,
-  EnvelopeIcon,
-  KeyIcon,
-  UserIcon,
 } from "@heroicons/react/24/outline";
-import Input from "./Input";
+import Input from "./InputSharp";
 
 const meta = {
-  title: "Components/Atoms/Input",
+  title: "Components/Atoms/Input/Sharp",
   component: Input,
   parameters: {
     layout: "centered",
@@ -62,17 +59,6 @@ export const Tertiary: Story = {
   },
 };
 
-export const AllVariants: Story = {
-  args: { label: "", placeholder: "" },
-  render: () => (
-    <div className="flex flex-col gap-4 w-[320px]">
-      <Input label="Primary" placeholder="Enter text" variant="primary" />
-      <Input label="Secondary" placeholder="Enter text" variant="secondary" />
-      <Input label="Tertiary" placeholder="Enter text" variant="tertiary" />
-    </div>
-  ),
-};
-
 export const WithError: Story = {
   args: {
     label: "First name",
@@ -81,7 +67,15 @@ export const WithError: Story = {
   },
 };
 
-export const WithIconRight: Story = {
+export const Disabled: Story = {
+  args: {
+    label: "First name",
+    placeholder: "Enter text",
+    disabled: true,
+  },
+};
+
+export const WithIcon: Story = {
   args: {
     label: "First name",
     placeholder: "Search...",
@@ -98,31 +92,13 @@ export const WithIconLeft: Story = {
   },
 };
 
-export const EmailIcon: Story = {
-  args: {
-    label: "First name",
-    placeholder: "Email address",
-    type: "email",
-    icon: <EnvelopeIcon className="w-5 h-5" />,
-    iconLeft: true,
-  },
-};
-
-export const PasswordIcon: Story = {
-  args: {
-    label: "First name",
-    placeholder: "Password",
-    type: "password",
-    icon: <KeyIcon className="w-5 h-5" />,
-  },
-};
-
-export const WithIconError: Story = {
-  args: {
-    label: "First name",
-    placeholder: "Username",
-    icon: <UserIcon className="w-5 h-5" />,
-    iconLeft: true,
-    error: true,
-  },
+export const AllVariants: Story = {
+  args: { label: "", placeholder: "" },
+  render: () => (
+    <div className="flex flex-col gap-4 w-[320px]">
+      <Input label="Primary" placeholder="Enter text" variant="primary" />
+      <Input label="Secondary" placeholder="Enter text" variant="secondary" />
+      <Input label="Tertiary" placeholder="Enter text" variant="tertiary" />
+    </div>
+  ),
 };

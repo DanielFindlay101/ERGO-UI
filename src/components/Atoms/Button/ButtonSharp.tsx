@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 const buttonVariants = cva(
   `font-semibold transition-colors focus:outline-none focus-visible:outline-none
    focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2
-   rounded-lg`,
+   rounded-none active:opacity-75`,
   {
     variants: {
       variant: {
@@ -26,7 +26,10 @@ const buttonVariants = cva(
       },
     },
     compoundVariants: [
-      { outline: true, className: "bg-transparent border-2" },
+      {
+        outline: true,
+        className: "bg-gray-950 border-transparent hover:bg-gray-800",
+      },
       {
         outline: true,
         variant: "primary",
@@ -86,6 +89,24 @@ const buttonVariants = cva(
   },
 );
 
+const sharpOutlineWrapperVariants = cva("inline-block p-px", {
+  variants: {
+    variant: {
+      primary: "bg-emerald-500",
+      secondary: "bg-violet-700",
+      tertiary: "bg-blue-500",
+      ghost: "bg-slate-400",
+      danger: "bg-red-500",
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+  },
+});
+
+const SHARP_BUTTON_CLIP_PATH =
+  "polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px)";
+
 export interface ButtonProps
   extends
     ButtonHTMLAttributes<HTMLButtonElement>,
@@ -111,7 +132,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    return (
+    const button = (
       <button
         disabled={loading}
         aria-busy={loading}
@@ -121,7 +142,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           loading && "opacity-50 cursor-not-allowed",
           className,
         )}
-        style={style}
+        style={{ clipPath: SHARP_BUTTON_CLIP_PATH, ...style }}
         {...props}
       >
         {icon && iconPosition === "left" && (
@@ -137,6 +158,19 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </button>
     );
+
+    if (outline) {
+      return (
+        <div
+          className={sharpOutlineWrapperVariants({ variant })}
+          style={{ clipPath: SHARP_BUTTON_CLIP_PATH }}
+        >
+          {button}
+        </div>
+      );
+    }
+
+    return button;
   },
 );
 

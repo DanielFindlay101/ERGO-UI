@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Badge from "./Badge";
+import Badge from "./BadgeSharp";
 
 const meta = {
-  title: "Components/Atoms/Badge",
+  title: "Components/Atoms/Badge/Sharp",
   component: Badge,
   parameters: {
     layout: "centered",
@@ -33,18 +33,6 @@ export const Secondary: Story = {
 
 export const Tertiary: Story = {
   args: { children: "Tertiary", variant: "tertiary" },
-};
-
-export const Small: Story = {
-  args: { children: "Small", size: "sm" },
-};
-
-export const Large: Story = {
-  args: { children: "Large", size: "lg" },
-};
-
-export const CustomClassName: Story = {
-  args: { children: "Custom", className: "bg-orange-500 text-black" },
 };
 
 export const AllVariants: Story = {

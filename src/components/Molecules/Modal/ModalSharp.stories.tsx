@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Modal, { type ModalProps } from "./Modal";
-import Button from "../../Atoms/Button/Button";
+import Modal, { type ModalProps } from "./ModalSharp";
+import Button from "../../Atoms/Button/ButtonSharp";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
 const ModalDemo = ({
@@ -29,7 +29,7 @@ const defaultChildren = (
 );
 
 const meta = {
-  title: "Components/Molecules/Modal",
+  title: "Components/Molecules/Modal/Sharp",
   component: Modal,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

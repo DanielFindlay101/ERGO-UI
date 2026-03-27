@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import TextArea from "./TextArea";
+import TextArea from "./TextAreaSharp";
 
 const meta = {
-  title: "Components/Atoms/TextArea",
+  title: "Components/Atoms/TextArea/Sharp",
   component: TextArea,
   parameters: {
     layout: "centered",
@@ -53,7 +53,11 @@ export const Tertiary: Story = {
 };
 
 export const WithError: Story = {
-  args: { label: "Message", placeholder: "Enter your message...", error: true },
+  args: {
+    label: "Message",
+    placeholder: "Enter your message...",
+    error: true,
+  },
 };
 
 export const Disabled: Story = {
@@ -62,10 +66,6 @@ export const Disabled: Story = {
     placeholder: "Enter your message...",
     disabled: true,
   },
-};
-
-export const Tall: Story = {
-  args: { label: "Message", placeholder: "Enter your message...", rows: 8 },
 };
 
 export const AllVariants: Story = {

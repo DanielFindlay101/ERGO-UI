@@ -3,13 +3,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const accordionVariants = cva(
-  "w-full bg-gray-500 text-white shadow-md dark:shadow-none overflow-hidden rounded-lg border-2",
+  "w-full bg-gray-500 text-white shadow-md dark:shadow-none overflow-hidden rounded-none",
   {
     variants: {
       variant: {
-        primary: "border-emerald-500",
-        secondary: "border-violet-700",
-        tertiary: "border-blue-500",
+        primary: "",
+        secondary: "",
+        tertiary: "",
       },
     },
     defaultVariants: {
@@ -50,6 +50,22 @@ const bodyVariants = cva(
   },
 );
 
+const wrapperVariants = cva("block p-[2px]", {
+  variants: {
+    variant: {
+      primary: "bg-emerald-500",
+      secondary: "bg-violet-700",
+      tertiary: "bg-blue-500",
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+  },
+});
+
+const SHARP_ACCORDION_CLIP_PATH =
+  "polygon(22px 0%, 100% 0%, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0% 100%, 0% 22px)";
+
 export interface AccordionProps
   extends
     Omit<HTMLAttributes<HTMLDetailsElement>, "title">,
@@ -60,11 +76,12 @@ export interface AccordionProps
 
 const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
   ({ variant, title, children, defaultOpen, ...props }, ref) => {
-    return (
+    const details = (
       <details
         ref={ref}
         open={defaultOpen}
         className={`group ${accordionVariants({ variant })}`}
+        style={{ clipPath: SHARP_ACCORDION_CLIP_PATH }}
         {...props}
       >
         <summary className={summaryVariants({ variant })}>
@@ -76,6 +93,15 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
         </summary>
         <div className={bodyVariants({ variant })}>{children}</div>
       </details>
+    );
+
+    return (
+      <div
+        className={wrapperVariants({ variant })}
+        style={{ clipPath: SHARP_ACCORDION_CLIP_PATH }}
+      >
+        {details}
+      </div>
     );
   },
 );
