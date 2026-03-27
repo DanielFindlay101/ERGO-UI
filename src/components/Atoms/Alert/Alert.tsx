@@ -20,7 +20,7 @@ const iconPanelVariants = cva(
   },
 );
 
-const headerVariants = cva("px-4 py-2", {
+const headerVariants = cva("px-4 py-2 ", {
   variants: {
     variant: {
       complete: "bg-emerald-500",
@@ -36,25 +36,22 @@ const headerVariants = cva("px-4 py-2", {
   defaultVariants: { variant: "complete", sharp: false },
 });
 
-const rightPanelVariants = cva(
-  "text-slate-600 dark:text-slate-200 bg-gray-200 dark:bg-gray-500 flex-1",
-  {
-    variants: {
-      sharp: {
-        true: "",
-        false: "rounded-r-2xl",
-      },
+const bodyVariants = cva("bg-gray-200 dark:bg-gray-500 flex-1", {
+  variants: {
+    sharp: {
+      true: "",
+      false: "rounded-r-2xl",
     },
-    defaultVariants: { sharp: false },
   },
-);
+  defaultVariants: { sharp: false },
+});
 
 const SHARP_ALERT_CLIP_PATH =
   "polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px)";
 
 export interface AlertProps extends VariantProps<typeof iconPanelVariants> {
   alertIcon?: ReactNode;
-  headingText: string;
+  headingText?: string;
   bodyText: string;
 }
 
@@ -74,14 +71,17 @@ export default function Alert({
       <div className={iconPanelVariants({ variant, sharp })}>
         <span aria-hidden="true">{alertIcon}</span>
       </div>
-      <div className={rightPanelVariants({ sharp })}>
+      <div className={bodyVariants({ sharp })}>
         <div className={headerVariants({ variant, sharp })}>
-          <span className="text-white text-lg font-semibold">
+          {/* <span className="text-white text-lg font-semibold">
             {headingText}
-          </span>
+          </span> */}
         </div>
         <div className="p-4">
-          <p>{bodyText}</p>
+          <h4 className="text-lg text-slate-black dark:text-white">
+            {headingText}
+          </h4>
+          <p className="text-slate-800 dark:text-slate-200">{bodyText}</p>
         </div>
       </div>
     </div>

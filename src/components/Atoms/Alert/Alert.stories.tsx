@@ -31,9 +31,8 @@ const BODY = "Lorem ipsum dolor sit amet consectetur adipisicing elit";
 export const Complete: Story = {
   args: {
     variant: "complete",
-    headingText: "Success",
+    // headingText: "Success",
     bodyText: BODY,
-    className: "bg-orange-500",
     alertIcon: <CheckCircleIcon className="w-8 h-8 text-white" />,
   },
 };
@@ -41,7 +40,7 @@ export const Complete: Story = {
 export const Info: Story = {
   args: {
     variant: "info",
-    headingText: "Information",
+    // headingText: "Information",
     bodyText: BODY,
     alertIcon: <InformationCircleIcon className="w-8 h-8 text-white" />,
   },
@@ -50,7 +49,7 @@ export const Info: Story = {
 export const Secondary: Story = {
   args: {
     variant: "secondary",
-    headingText: "Notice",
+    // headingText: "Notice",
     bodyText: BODY,
     alertIcon: <ExclamationTriangleIcon className="w-8 h-8 text-white" />,
   },
@@ -59,7 +58,7 @@ export const Secondary: Story = {
 export const Danger: Story = {
   args: {
     variant: "danger",
-    headingText: "Error",
+    // headingText: "Error",
     bodyText: BODY,
     alertIcon: <XCircleIcon className="w-8 h-8 text-white" />,
   },
