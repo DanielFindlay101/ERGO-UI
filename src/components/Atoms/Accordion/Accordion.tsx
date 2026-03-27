@@ -7,9 +7,9 @@ const accordionVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-emerald-500",
-        secondary: "bg-violet-700",
-        tertiary: "bg-blue-500",
+        primary: "",
+        secondary: "",
+        tertiary: "",
       },
       sharp: {
         true: "rounded-none",
@@ -44,7 +44,7 @@ const summaryVariants = cva(
   },
 );
 
-const contentVariants = cva(
+const bodyVariants = cva(
   "border-l-4 px-4 pb-4 pt-3 text-slate-600 dark:text-slate-200 bg-gray-200 dark:bg-gray-500",
   {
     variants: {
@@ -101,7 +101,8 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
             className="h-5 w-5 flex-shrink-0 transition-transform duration-200 group-open:rotate-180"
           />
         </summary>
-        <div className={contentVariants({ variant })}>{children}</div>
+
+        <div className={bodyVariants({ variant })}>{children}</div>
       </details>
     );
 

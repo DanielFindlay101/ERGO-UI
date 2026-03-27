@@ -69,12 +69,12 @@ const headerVariants = cva(
       },
     },
     compoundVariants: [
-      { sharp: true, variant: "primary", className: "bg-emerald-500/10" },
-      { sharp: true, variant: "secondary", className: "" },
-      { sharp: true, variant: "tertiary", className: "" },
-      { sharp: false, variant: "primary", className: "bg-emerald-500/50" },
-      { sharp: false, variant: "secondary", className: "bg-violet-700/50" },
-      { sharp: false, variant: "tertiary", className: "bg-blue-500/50" },
+      { sharp: true, variant: "primary", className: "bg-emerald-500" },
+      { sharp: true, variant: "secondary", className: "bg-violet-700" },
+      { sharp: true, variant: "tertiary", className: "bg-blue-500" },
+      { sharp: false, variant: "primary", className: "bg-emerald-500" },
+      { sharp: false, variant: "secondary", className: "bg-violet-700" },
+      { sharp: false, variant: "tertiary", className: "bg-blue-500" },
     ],
     defaultVariants: {
       sharp: false,
