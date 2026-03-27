@@ -6,6 +6,7 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 import Input from "./Input";
+import Button from "../Button/Button";
 
 const meta = {
   title: "Components/Atoms/Input",
@@ -125,4 +126,41 @@ export const WithIconError: Story = {
     iconLeft: true,
     error: true,
   },
+};
+
+export const WithButtonPrimary: Story = {
+  args: { label: "", placeholder: "" },
+  render: () => (
+    <div className="flex flex-col gap-1 w-[420px]">
+      <span className="text-gray-800 dark:text-gray-300">Search</span>
+      <div className="flex items-stretch gap-2">
+        <Input label="" placeholder="Enter text" variant="primary" />
+        <Button variant="primary">Submit</Button>
+      </div>
+    </div>
+  ),
+};
+export const WithButtonSecondary: Story = {
+  args: { label: "", placeholder: "" },
+  render: () => (
+    <div className="flex flex-col gap-1 w-[420px]">
+      <span className="text-gray-800 dark:text-gray-300">Search</span>
+      <div className="flex items-stretch gap-2">
+        <Input label="" placeholder="Enter text" variant="secondary" />
+        <Button variant="secondary">Submit</Button>
+      </div>
+    </div>
+  ),
+};
+export const WithButtonTertiary: Story = {
+  args: { label: "", placeholder: "" },
+  render: () => (
+    <div className="flex flex-col gap-1 w-[420px]">
+      <span className="text-gray-800 dark:text-gray-300">Search</span>
+      <div className="flex items-stretch gap-2">
+        <Input label="" placeholder="Enter text" variant="tertiary" />
+        <Button variant="tertiary">Submit</Button>
+      </div>
+    </div>
+  ),
 };

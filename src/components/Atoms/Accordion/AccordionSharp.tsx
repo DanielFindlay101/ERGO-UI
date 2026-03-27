@@ -72,10 +72,11 @@ export interface AccordionProps
     VariantProps<typeof accordionVariants> {
   title: ReactNode;
   defaultOpen?: boolean;
+  icon?: ReactNode;
 }
 
 const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
-  ({ variant, title, children, defaultOpen, ...props }, ref) => {
+  ({ variant, title, children, defaultOpen, icon, ...props }, ref) => {
     const details = (
       <details
         ref={ref}
@@ -85,7 +86,10 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
         {...props}
       >
         <summary className={summaryVariants({ variant })}>
-          <span>{title}</span>
+          <div className="flex gap-2 items-center">
+            {icon}
+            <span>{title}</span>
+          </div>
           <ChevronDownIcon
             aria-hidden="true"
             className="h-5 w-5 flex-shrink-0 transition-transform duration-200 group-open:rotate-180"

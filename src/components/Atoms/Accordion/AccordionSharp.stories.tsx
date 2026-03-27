@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Accordion from "./AccordionSharp";
+import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/solid";
 
 const meta = {
   title: "Components/Atoms/Accordion/Sharp",
@@ -36,6 +37,7 @@ export const Default: Story = {
   args: {
     title: "What is ERGO-UI?",
     children: sampleContent,
+    icon: <AdjustmentsHorizontalIcon className="w-5 h-5" />,
   },
 };
 
