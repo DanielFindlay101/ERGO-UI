@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 const toggleVariants = cva(
-  "group relative inline-flex w-11 shrink-0 bg-gray-500 p-0.5 shadow-inner outline-offset-2 transition-colors duration-200 ease-in-out has-[:focus-visible]:outline-2 rounded-full",
+  "group relative inline-flex w-11 shrink-0 bg-gray-500 p-0.5 shadow-inner outline-offset-2 transition-colors duration-200 ease-in-out has-[:focus-visible]:outline-2 rounded-none",
   {
     variants: {
       variant: {
@@ -19,7 +19,7 @@ const toggleVariants = cva(
 );
 
 const slideVariants = cva(
-  "size-5 rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out group-has-[:checked]:translate-x-5",
+  "size-5 rounded-none bg-white shadow-sm ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out group-has-[:checked]:translate-x-5",
 );
 
 export interface ToggleProps

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Progress from "./Progress";
+import Progress from "./ProgressSharp";
 
 const meta = {
-  title: "Components/Atoms/Progress",
+  title: "Components/Atoms/Progress/Sharp",
   component: Progress,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
@@ -44,40 +44,13 @@ export const WithLabel: Story = {
   args: { value: 65, showLabel: true },
 };
 
-export const SmallSize: Story = {
-  args: { value: 65, size: "sm", showLabel: true },
-};
-
-export const LargeSize: Story = {
-  args: { value: 65, size: "lg", showLabel: true },
-};
-
-export const LowValue: Story = {
-  args: { value: 10, showLabel: true },
-};
-
-export const Complete: Story = {
-  args: { value: 100, showLabel: true },
-};
-
 export const AllBarVariants: Story = {
   args: { value: 0 },
   render: () => (
     <div className="flex flex-col gap-4 w-[320px]">
-      <Progress value={65} variant="primary" showLabel />
+      <Progress label="Test" value={65} variant="primary" showLabel />
       <Progress value={45} variant="secondary" showLabel />
       <Progress value={80} variant="tertiary" showLabel />
-    </div>
-  ),
-};
-
-export const AllBarSizes: Story = {
-  args: { value: 0 },
-  render: () => (
-    <div className="flex flex-col gap-5 w-[320px]">
-      <Progress value={65} size="sm" showLabel />
-      <Progress value={65} size="md" showLabel />
-      <Progress value={65} size="lg" showLabel />
     </div>
   ),
 };
@@ -101,17 +74,6 @@ export const AllCircularVariants: Story = {
       <Progress value={65} type="circular" variant="primary" showLabel size="lg" />
       <Progress value={45} type="circular" variant="secondary" showLabel size="lg" />
       <Progress value={80} type="circular" variant="tertiary" showLabel size="lg" />
-    </div>
-  ),
-};
-
-export const AllCircularSizes: Story = {
-  args: { value: 0 },
-  render: () => (
-    <div className="flex gap-6 items-center justify-center">
-      <Progress value={65} type="circular" size="sm" showLabel />
-      <Progress value={65} type="circular" size="md" showLabel />
-      <Progress value={65} type="circular" size="lg" showLabel />
     </div>
   ),
 };

@@ -2,22 +2,19 @@ import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const inputVariants = cva(
-  `w-full py-2 bg-gray-200 dark:bg-gray-900 border-2 text-gray-800 dark:text-gray-400
+  `w-full py-2 bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-400
   transition-colors placeholder:text-gray-500
   focus:outline-none disabled:cursor-not-allowed disabled:opacity-50
-  rounded-lg`,
+  rounded-none !border-0`,
   {
     variants: {
       variant: {
-        primary:
-          "border-emerald-700 hover:border-emerald-600 focus:ring-2 focus:ring-emerald-500",
-        secondary:
-          "border-violet-700 hover:border-violet-800 focus:ring-2 focus:ring-violet-500",
-        tertiary:
-          "border-blue-700 hover:border-blue-600 focus:ring-2 focus:ring-blue-500",
+        primary: "",
+        secondary: "",
+        tertiary: "",
       },
       error: {
-        true: "border-red-500 hover:border-red-600 focus:ring-2 focus:ring-red-400",
+        true: "",
         false: "",
       },
       iconLeft: {
@@ -32,6 +29,27 @@ const inputVariants = cva(
     },
   },
 );
+
+const SHARP_INPUT_CLIP_PATH =
+  "polygon(0% 0%, 100% 0%, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0% 100%)";
+
+const sharpWrapperVariants = cva("inline-block p-[2px]", {
+  variants: {
+    variant: {
+      primary: "bg-emerald-700 focus-within:bg-emerald-500",
+      secondary: "bg-violet-700 focus-within:bg-violet-500",
+      tertiary: "bg-blue-700 focus-within:bg-blue-500",
+    },
+    error: {
+      true: "bg-red-500 focus:ring-2 focus:ring-red-400",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+    error: false,
+  },
+});
 
 export interface InputProps
   extends
@@ -67,7 +85,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           error,
           iconLeft: hasIcon ? iconLeft : undefined,
         })}
-        style={style}
+        style={{ clipPath: SHARP_INPUT_CLIP_PATH, ...style }}
         {...props}
       />
     );
@@ -93,9 +111,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     );
 
     return (
-      <label>
+      <label className="flex flex-col gap-0">
         <span className="text-gray-800 dark:text-gray-300">{label}</span>
-        {inner}
+        <div
+          className={sharpWrapperVariants({ variant, error })}
+          style={{ clipPath: SHARP_INPUT_CLIP_PATH }}
+        >
+          {inner}
+        </div>
       </label>
     );
   },

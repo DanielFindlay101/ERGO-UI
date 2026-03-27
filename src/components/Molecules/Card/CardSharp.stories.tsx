@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Card from "./Card";
-import Toggle from "../../Atoms/Toggle/Toggle";
+import Card from "./CardSharp";
+import Toggle from "../../Atoms/Toggle/ToggleSharp";
+import Button from "../../Atoms/Button/ButtonSharp";
 import { InboxIcon } from "@heroicons/react/24/outline";
 
 const meta = {
-  title: "Components/Molecules/Card",
+  title: "Components/Molecules/Card/Sharp",
   component: Card,
   parameters: {
     layout: "centered",
@@ -31,17 +32,12 @@ type Story = StoryObj<typeof meta>;
 const sampleContent =
   "ERGO-UI is a component library built for high-performance interfaces. Each component is designed to be composable, accessible, and visually consistent.";
 
-export const Default: Story = {
+export const Primary: Story = {
   args: {
-    title: "",
+    title: "Card Title",
+    children: sampleContent,
+    variant: "primary",
   },
-  render: () => (
-    <Card title="Notifications">
-      <div className="flex flex-col gap-3">
-        <p className="">Here is my card content</p>
-      </div>
-    </Card>
-  ),
 };
 
 export const Secondary: Story = {
@@ -63,7 +59,10 @@ export const Tertiary: Story = {
 export const WithToggle: Story = {
   args: { title: "" },
   render: () => (
-    <Card variant="primary" title="Notifications">
+    <Card
+      title="Notifications"
+      headerIcon={<InboxIcon className="w-4 h-4" />}
+    >
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <span>Email notifications</span>
@@ -77,21 +76,10 @@ export const WithToggle: Story = {
           <span>SMS alerts</span>
           <Toggle />
         </div>
-      </div>
-    </Card>
-  ),
-};
-
-export const WithIcon: Story = {
-  args: { title: "" },
-  render: () => (
-    <Card
-      title="Notifications"
-      headerIcon={<InboxIcon className="w-4 h-4" />}
-      variant="primary"
-    >
-      <div className="flex flex-col gap-3">
-        <p>{sampleContent}</p>
+        <div className="flex justify-end gap-2 mt-2">
+          <Button variant="ghost">Cancel</Button>
+          <Button variant="primary">Confirm</Button>
+        </div>
       </div>
     </Card>
   ),

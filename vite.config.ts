@@ -14,9 +14,11 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: 'src/index.ts',
+      entry: {
+        'ergo-ui': 'src/index.ts',
+        'ergo-ui-sharp': 'src/sharp/index.ts',
+      },
       name: 'ErgoUI',
-      fileName: (format) => `ergo-ui.${format === 'es' ? 'js' : 'cjs'}`,
       formats: ['es', 'cjs'],
     },
     rollupOptions: {

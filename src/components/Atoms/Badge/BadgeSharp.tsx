@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center font-semibold rounded-full",
+  "inline-flex items-center justify-center font-semibold rounded-none",
   {
     variants: {
       variant: {
@@ -25,6 +25,9 @@ const badgeVariants = cva(
   },
 );
 
+const SHARP_BADGE_CLIP_PATH =
+  "polygon(6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px)";
+
 export interface BadgeProps
   extends HTMLAttributes<HTMLSpanElement>, VariantProps<typeof badgeVariants> {}
 
@@ -34,7 +37,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       <span
         ref={ref}
         className={twMerge(badgeVariants({ variant, size }), className)}
-        style={style}
+        style={{ clipPath: SHARP_BADGE_CLIP_PATH, ...style }}
         {...props}
       >
         {children}

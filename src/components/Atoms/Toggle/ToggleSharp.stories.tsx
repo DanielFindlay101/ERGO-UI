@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Toggle from "./Toggle";
+import Toggle from "./ToggleSharp";
 
 const meta = {
-  title: "Components/Atoms/Toggle",
+  title: "Components/Atoms/Toggle/Sharp",
   component: Toggle,
   parameters: {
     layout: "centered",
@@ -25,11 +25,5 @@ export const Secondary: Story = {
 export const Tertiary: Story = {
   args: {
     variant: "tertiary",
-  },
-};
-export const Custom: Story = {
-  args: {
-    variant: "primary",
-    className: "has-[:checked]:bg-cyan-500 outline-cyan-500",
   },
 };

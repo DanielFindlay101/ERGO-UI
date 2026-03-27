@@ -2,12 +2,12 @@ import { ImgHTMLAttributes, forwardRef } from "react";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
-const avatarVariants = cva("relative inline-block shrink-0 rounded-full");
+const avatarVariants = cva("relative inline-block shrink-0 rounded-none");
 
-const imageVariants = cva("w-full h-full object-cover rounded-full");
+const imageVariants = cva("w-full h-full object-cover rounded-none");
 
 const indicatorVariants = cva(
-  "absolute block border border-gray-900 rounded-full top-0 right-0",
+  "absolute block border border-gray-900 rounded-none top-[-5px] right-[-5px]",
   {
     variants: {
       status: {

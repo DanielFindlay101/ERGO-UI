@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const iconPanelVariants = cva(
-  "flex justify-center items-center shadow-md dark:shadow-none p-3 rounded-l-2xl",
+  "flex justify-center items-center shadow-md dark:shadow-none p-3",
   {
     variants: {
       variant: {
@@ -16,7 +16,7 @@ const iconPanelVariants = cva(
   },
 );
 
-const headerVariants = cva("px-4 py-2 rounded-tr-2xl", {
+const headerVariants = cva("px-4 py-2", {
   variants: {
     variant: {
       complete: "bg-emerald-500",
@@ -28,9 +28,10 @@ const headerVariants = cva("px-4 py-2 rounded-tr-2xl", {
   defaultVariants: { variant: "complete" },
 });
 
-const bodyVariants = cva(
-  "bg-gray-200 dark:bg-gray-500 flex-1 rounded-r-2xl",
-);
+const bodyVariants = cva("bg-gray-200 dark:bg-gray-500 flex-1");
+
+const SHARP_ALERT_CLIP_PATH =
+  "polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px)";
 
 export interface AlertProps extends VariantProps<typeof iconPanelVariants> {
   alertIcon?: ReactNode;
@@ -45,7 +46,11 @@ export default function Alert({
   bodyText,
 }: AlertProps) {
   return (
-    <div role="alert" className={"flex max-w-[600px]"}>
+    <div
+      role="alert"
+      className={"flex max-w-[600px]"}
+      style={{ clipPath: SHARP_ALERT_CLIP_PATH }}
+    >
       <div className={iconPanelVariants({ variant })}>
         <span aria-hidden="true">{alertIcon}</span>
       </div>

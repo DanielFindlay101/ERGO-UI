@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Accordion from "./Accordion";
-import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
+import Accordion from "./AccordionSharp";
+import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/solid";
 
 const meta = {
-  title: "Components/Atoms/Accordion",
+  title: "Components/Atoms/Accordion/Sharp",
   component: Accordion,
   parameters: {
     layout: "centered",

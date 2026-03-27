@@ -2,13 +2,13 @@ import { HTMLAttributes, ReactNode, forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const cardVariants = cva(
-  "w-full border-l-4 overflow-hidden shadow-md dark:shadow-none rounded-lg border-2",
+  "w-full border-l-4 overflow-hidden shadow-md dark:shadow-none rounded-none",
   {
     variants: {
       variant: {
-        primary: "border-l-emerald-500 border-emerald-500",
-        secondary: "border-l-violet-700 border-violet-700",
-        tertiary: "border-l-blue-500 border-blue-500",
+        primary: "border-l-emerald-500 bg-gray-200 dark:bg-gray-500",
+        secondary: "border-l-violet-700 bg-gray-200 dark:bg-gray-500",
+        tertiary: "border-l-blue-500 bg-gray-200 dark:bg-gray-500",
       },
     },
     defaultVariants: {
@@ -49,6 +49,22 @@ const bodyVariants = cva(
   },
 );
 
+const wrapperVariants = cva("block p-[2px]", {
+  variants: {
+    variant: {
+      primary: "bg-emerald-500",
+      secondary: "bg-violet-700",
+      tertiary: "bg-blue-500",
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+  },
+});
+
+const SHARP_CARD_CLIP_PATH =
+  "polygon(22px 0%, 100% 0%, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0% 100%, 0% 22px)";
+
 export interface CardProps
   extends
     Omit<HTMLAttributes<HTMLDivElement>, "title">,
@@ -59,8 +75,13 @@ export interface CardProps
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ variant, title, children, headerIcon, ...props }, ref) => {
-    return (
-      <div ref={ref} className={cardVariants({ variant })} {...props}>
+    const card = (
+      <div
+        ref={ref}
+        className={cardVariants({ variant })}
+        style={{ clipPath: SHARP_CARD_CLIP_PATH }}
+        {...props}
+      >
         <div className={headerVariants({ variant })}>
           <h4 className="text-lg">{title}</h4>
           {headerIcon && (
@@ -70,6 +91,15 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           )}
         </div>
         <div className={bodyVariants({ variant })}>{children}</div>
+      </div>
+    );
+
+    return (
+      <div
+        className={wrapperVariants({ variant })}
+        style={{ clipPath: SHARP_CARD_CLIP_PATH }}
+      >
+        {card}
       </div>
     );
   },

@@ -11,7 +11,7 @@ const VARIANT_HEX: Record<string, string> = {
 const sliderVariants = cva(
   `w-full h-2 appearance-none cursor-pointer
    bg-gray-200 dark:bg-gray-700
-   rounded-full
+   rounded-none
    [&::-webkit-slider-thumb]:appearance-none
    [&::-webkit-slider-thumb]:h-4
    [&::-webkit-slider-thumb]:w-4
@@ -19,13 +19,13 @@ const sliderVariants = cva(
    [&::-webkit-slider-thumb]:bg-[var(--slider-color)]
    [&::-webkit-slider-thumb]:transition-transform
    [&::-webkit-slider-thumb]:hover:scale-110
-   [&::-webkit-slider-thumb]:rounded-full
+   [&::-webkit-slider-thumb]:rounded-none
    [&::-moz-range-thumb]:border-none
    [&::-moz-range-thumb]:h-4
    [&::-moz-range-thumb]:w-4
    [&::-moz-range-thumb]:cursor-pointer
    [&::-moz-range-thumb]:bg-[var(--slider-color)]
-   [&::-moz-range-thumb]:rounded-full
+   [&::-moz-range-thumb]:rounded-none
    [&::-moz-range-progress]:bg-[var(--slider-color)]
    [&::-moz-range-progress]:h-2
    disabled:opacity-50 disabled:cursor-not-allowed`,

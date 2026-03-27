@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Select from "./Select";
+import Select from "./SelectSharp";
 
 const meta = {
-  title: "Components/Atoms/Select",
+  title: "Components/Atoms/Select/Sharp",
   component: Select,
   parameters: {
     layout: "centered",
@@ -50,6 +50,14 @@ export const Tertiary: Story = {
   args: { label: "Fruit", children: options, variant: "tertiary" },
 };
 
+export const WithError: Story = {
+  args: { label: "Fruit", children: options, error: true },
+};
+
+export const Disabled: Story = {
+  args: { label: "Fruit", children: options, disabled: true },
+};
+
 export const AllVariants: Story = {
   args: { label: "", children: options },
   render: () => (
@@ -59,12 +67,4 @@ export const AllVariants: Story = {
       <Select label="Tertiary" variant="tertiary">{options}</Select>
     </div>
   ),
-};
-
-export const WithError: Story = {
-  args: { label: "Fruit", children: options, error: true },
-};
-
-export const Disabled: Story = {
-  args: { label: "Fruit", children: options, disabled: true },
 };
